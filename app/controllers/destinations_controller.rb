@@ -13,6 +13,4 @@ class DestinationsController < ApplicationController
     end
   end
 
-
-  
 end

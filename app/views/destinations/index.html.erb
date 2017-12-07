@@ -7,7 +7,7 @@
   <% end %>
 <ol>
 <% @destinations.each do |destination| %>
-    <li><%= destination.full_name %> <%= button_to "I want to go here", vacations_path(destination_id: destination.id, method: :post)%></li>
+    <li><%= destination.full_name %> <%= button_to "I want to go here", vacations_path(:destination_id => destination.id, :method => 'post')%></li>
     <br>
 <% end %>
 </ol>

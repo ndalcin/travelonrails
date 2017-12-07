@@ -5,14 +5,37 @@ class VacationsController < ApplicationController
   end
 
   def create
-    @vacation = Vacation.new(vacation_params)
-    @vacation.user = current_user
-    if !@vacation.date.blank? && @vacation.save
+    if params[:destination_id]
+      @vacation = Vacation.new(destination_id: params[:destination_id])
+      @vacation.user = current_user
+      if @vacation.save
+        redirect_to edit_vacation_path(@vacation)
+      else
+        redirect_to destinations_path
+      end
+    elsif !!vacation_params
+      @vacation = Vacation.new(vacation_params)
+      @vacation.user = current_user
+      if @vacation.save
+        redirect_to vacation_path(@vacation)
+      else
+        render "edit", notice: "check error messages"
+      end
+    end
+  end
+
+  def edit
+    @vacation = Vacation.find(params[:id])
+  end
+
+  def update
+
+    @vacation = Vacation.find(params[:id])
+    @vacation.update(vacation_params)
+    if @vacation.save
       redirect_to vacation_path(@vacation)
-    elsif @vacation.date.blank? && @vacation.save
-      render "edit"
-    elsif !@vacation.save
-      render "edit", notice: "check error messages"
+    else
+      render :edit
     end
   end
 
@@ -20,10 +43,10 @@ class VacationsController < ApplicationController
     @vacation = Vacation.find(params[:id])
   end
 
-
   private
 
   def vacation_params
-    params.require(:vacation).permit(:destination_id, :name, :budget, :length, :date)
+    params.require(:vacation).permit(:date, :destination_id, :name, :budget, :length)
   end
+
 end

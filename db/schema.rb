@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20171207024354) do
     t.integer "length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "date"
+    t.string "date"
     t.integer "user_id"
   end
 
