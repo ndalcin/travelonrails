@@ -1,8 +1,12 @@
 class Destination < ApplicationRecord
   has_many :vacations
 
-  def self.international?
-    true unless country == "USA"
+  def self.domestic
+    where(country: "USA")
+  end
+
+  def self.international
+    where.not(country: "USA")
   end
 
   def full_name

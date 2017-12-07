@@ -1,10 +1,19 @@
 <h1> Check out all of our great destinations! </h1>
-<% if current_user %>
-  <%= link_to 'Start Planning a Vacation!', new_vacation_path %>
-<% end %>
+
+<h3>Filter Destinations:</h3>
+  <%= form_tag("/destinations", method: "get") do %>
+    <%= select_tag "location", options_for_select(["International", "Domestic"]), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
 <ol>
 <% @destinations.each do |destination| %>
-    <li><%= destination.city %>, <%= destination.country %></li>
+    <li><%= destination.full_name %> <%= button_to "I want to go here", vacations_path(destination_id: destination.id, method: :post)%></li>
     <br>
 <% end %>
 </ol>
+
+
+
+<% if current_user %>
+  <%= link_to 'Start Planning a Vacation!', new_vacation_path %>
+<% end %>
