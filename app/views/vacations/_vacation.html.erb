@@ -1,0 +1,29 @@
+<h1> Create the vacation of your dreams!</h1>
+<%= form_for @vacation do |f| %>
+  <div class="field">
+    <%= f.label "Where would you like to go?" %>
+    <%= f.collection_select :destination_id, Destination.all, :id, :full_name, include_blank: true %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label "Vacation Name" %><br />
+    <%= f.text_field :name %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label "What is your budget? (Please input number in dollars)" %><br />
+    <%= f.number_field :budget %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label "When would you like to go?" %><br />
+    <%= f.text_field :length %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label "How many days would you like to travel for" %><br />
+    <%= f.number_field :length %>
+  </div>
+  <br>
+  <div class="actions"><%= f.submit %></div>
+<% end %>

@@ -1,0 +1,11 @@
+<% if current_user && !current_user.vacations.empty? %>
+
+  <% current_user.vacations.each do |vacation| %>
+    <%= render partial: "vacations/vacation", locals: {vacation: @vacation} %>
+  <% end %>
+<% elsif current_user && current_user.vacations.empty? %>
+
+  <h2>You have no planned vacations!</h2>
+  <h2>Click <%= link_to 'here', new_vacation_path %> to start adding vacations</h2>
+
+<% end %>

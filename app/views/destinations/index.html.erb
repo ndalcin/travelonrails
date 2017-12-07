@@ -1,0 +1,10 @@
+<h1> Check out all of our great destinations! </h1>
+<% if current_user %>
+  <%= link_to 'Start Planning a Vacation!', new_vacation_path %>
+<% end %>
+<ol>
+<% @destinations.each do |destination| %>
+    <li><%= destination.city %>, <%= destination.country %></li>
+    <br>
+<% end %>
+</ol>

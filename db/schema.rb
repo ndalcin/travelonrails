@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204133913) do
+ActiveRecord::Schema.define(version: 20171207024354) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -34,20 +34,13 @@ ActiveRecord::Schema.define(version: 20171204133913) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "user_vacations", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "vacation_id"
-    t.date "date_of_travel"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
   end
 
   create_table "vacation_activities", force: :cascade do |t|
@@ -60,10 +53,12 @@ ActiveRecord::Schema.define(version: 20171204133913) do
   create_table "vacations", force: :cascade do |t|
     t.string "name"
     t.integer "destination_id"
-    t.integer "min_budget"
+    t.integer "budget"
     t.integer "length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date"
+    t.integer "user_id"
   end
 
 end
