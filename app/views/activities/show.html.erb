@@ -3,7 +3,7 @@
 
 <h3>$<%= @activity.price %> per person</h3>
 <h3>Rating: <%= @activity.rating %>/10</h3>
-<h3>Activity Type: <%= @activity.type.name %> (Click <%= link_to 'here', type_path(@activity.type) %> to see more <%= @activity.type.name.downcase%>s)</h3>
+<h3>Click <%= link_to 'here', type_path(@activity.type) %> to see more <%= @activity.type.name.downcase%> activities)</h3>
 
 
 <% if current_user %>

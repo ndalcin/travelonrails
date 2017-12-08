@@ -2,6 +2,7 @@
 <%= form_for @vacation do |f| %>
   <div class="field">
     <%= f.label "Where would you like to go?" %>
+    <br>
     <%= f.collection_select :destination_id, Destination.all, :id, :full_name, include_blank: true %>
   </div>
   <br>
