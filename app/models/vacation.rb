@@ -4,6 +4,8 @@ class Vacation < ApplicationRecord
   has_many :vacation_activities
   has_many :activities, through: :vacation_activities
 
+  validates :name, presence: true
+
   def activities_total
     activities_total = 0
     self.activities.each do |activity|

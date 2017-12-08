@@ -1,5 +1,17 @@
 
 <%= form_for @vacation do |f| %>
+
+<% if @vacation.errors.any? %>
+  <div class="error_messages">
+    <h2>Form is invalid</h2>
+    <ul>
+      <% @vacation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
   <div class="field">
     <%= f.label "Where would you like to go?" %>
     <br>

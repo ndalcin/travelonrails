@@ -3,7 +3,7 @@ class VacationsController < ApplicationController
   def index
     @vacations = Vacation.all
   end
-  
+
   def new
     @vacation = Vacation.new
   end
@@ -23,7 +23,7 @@ class VacationsController < ApplicationController
       if @vacation.save
         redirect_to vacation_path(@vacation)
       else
-        render "edit", notice: "check error messages"
+        render "edit"
       end
     end
   end
