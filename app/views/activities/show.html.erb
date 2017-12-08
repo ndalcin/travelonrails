@@ -1,0 +1,26 @@
+<h1><%=@activity.name%></h1>
+<h2>You can find this activity at ANY destination</h2>
+
+<h3>$<%= @activity.price %> per person</h3>
+<h3>Rating: <%= @activity.rating %>/10</h3>
+<h3>Activity Type: <%= @activity.type.name %> (Click <%= link_to 'here', type_path(@activity.type) %> to see more <%= @activity.type.name.downcase%>s)</h3>
+
+
+<% if current_user %>
+  <%= form_for @activity do |f| %>
+    <%= f.fields_for :vacations, @activity.vacations.build do |ff| %>
+      <%= ff.label "To add this activity to a new vacation, please give your vacation a name:" %>
+      <br><br>
+      <%= ff.text_field :name %>
+      <% end %>
+      <br><br>
+    <% if !current_user.vacations.empty? %>
+      <%= f.label "Or, select one of your existing vacations" %>
+      <br><br>
+      <%= f.collection_select :vacations, @vacations, :id, :name, include_blank: true %>
+    <% end %>
+    <br><br>
+    <%= f.submit "Add Activity" %>
+  <% end %>
+
+<% end %>

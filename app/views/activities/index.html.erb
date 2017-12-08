@@ -3,13 +3,6 @@
 
 <% @activities.each do |activity| %>
   <ul>
-    <strong><%= activity.name %></strong>
-    <li>$<%= activity.price %> per person</li>
-    <li>Rating: <%= activity.rating %>/10</li>
-
-    <% if current_user %>
-    <% @vacation = Vacation.find(params[:vacation_id]) %>
-      <%= button_to "Add to '#{@vacation.name}'", vacation_activities_path(activity_id: activity.id, vacation_id: @vacation.id) %>
-    <% end %>
+    <strong><%= link_to activity.name, activity_path(activity) %></strong>
   </ul>
   <% end %>

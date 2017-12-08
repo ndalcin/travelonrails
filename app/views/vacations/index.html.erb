@@ -1,8 +1,13 @@
 <% if current_user && !current_user.vacations.empty? %>
-
+<h1> <%= current_user.name%>'s Planned Vacations </h1>
+<br><br>
+<ol>
   <% current_user.vacations.each do |vacation| %>
-    <%= render partial: "vacations/vacation", locals: {vacation: @vacation} %>
+      <li><%= link_to vacation.name, vacation_path(vacation) %> in <%=vacation.destination.full_name%></li>
+      <br><br>
   <% end %>
+</ol>
+
 <% elsif current_user && current_user.vacations.empty? %>
 
   <h2>You have no planned vacations!</h2>

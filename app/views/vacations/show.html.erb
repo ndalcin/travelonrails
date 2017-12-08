@@ -9,5 +9,5 @@
   <h3>Cost of Activities: $<%=@vacation.activities_total%></h3>
   <h3><strong>Budget Remaining: $<%= @vacation.budget - @vacation.activities_total %></strong></h3>
 <% else %>
-  <h2>Click <%= link_to 'here', vacation_activities_path %> to start adding activities</h2>
+  <h2>Click <%= link_to 'here', activities_path %> to start adding activities</h2>
 <% end %>
