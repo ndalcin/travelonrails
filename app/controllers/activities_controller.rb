@@ -10,7 +10,6 @@ class ActivitiesController < ApplicationController
   end
 
   def update
-    byebug
     @activity = Activity.find(params[:id])
     if !!activity_params
       new_vacation = @activity.vacations.create(activity_params)
