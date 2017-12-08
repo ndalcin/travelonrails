@@ -8,11 +8,17 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :vacations
-  resources :activities, only: [:index, :show, :update]
-  resources :destinations
-  resources :users
-  resources :types
+
+  resources :activities, only: [:index, :update]
+  resources :destinations, only: :index
+  resources :users do
+    resources :vacations, except: :show
+  end
+  resources :vacations, only: :show
+  resources :types do
+    resources :activities, only: :show
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end

@@ -3,6 +3,6 @@
 
 <% @activities.each do |activity| %>
   <ul>
-    <strong><%= link_to activity.name, activity_path(activity) %></strong>
+    <strong><%= link_to activity.name, type_activity_path(activity.type.id, activity.id) %></strong>
   </ul>
   <% end %>

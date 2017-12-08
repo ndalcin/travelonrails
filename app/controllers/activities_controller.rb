@@ -6,7 +6,9 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
-    @vacations = current_user.vacations
+    if current_user
+      @vacations = current_user.vacations
+    end
   end
 
   def update

@@ -13,7 +13,7 @@ class VacationsController < ApplicationController
       @vacation = Vacation.new(destination_id: params[:destination_id])
       @vacation.user = current_user
       if @vacation.save
-        redirect_to edit_vacation_path(@vacation)
+        redirect_to edit_user_vacation_path(current_user, @vacation)
       else
         redirect_to destinations_path
       end
@@ -46,6 +46,8 @@ class VacationsController < ApplicationController
   def show
     @vacation = Vacation.find(params[:id])
   end
+
+  def destroy
 
   private
 

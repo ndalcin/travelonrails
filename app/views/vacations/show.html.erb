@@ -3,7 +3,7 @@
 <h3>Leaving on: <%= @vacation.date%> for <%=@vacation.length%> days!</h3>
 <h3>Starting Budget: $<%= @vacation.budget %></h3>
 
-<%= link_to "Edit Vacation", edit_vacation_path(@vacation) %>
+<%= link_to "Edit Vacation", edit_user_vacation_path(current_user, @vacation) %>
 
 <% if !@vacation.activities.empty? %>
   <h3>Cost of Activities: $<%=@vacation.activities_total%></h3>

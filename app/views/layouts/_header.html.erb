@@ -2,7 +2,7 @@
 
   <% if current_user %>
     *Hello, <%= current_user.name %>* ||
-    <%= link_to "My Vacations", vacations_path %> ||
+    <%= link_to "My Vacations", user_vacations_path(current_user) %> ||
     <%= link_to "Log Out", logout_path %> ||
   <% else %>
     <%= link_to "Log in with GitHub", '/auth/github' %> ||
