@@ -8,13 +8,14 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-
+  get 'activities/top_five', to: 'activities#top_five', as: 'top_five'
+  resources :vacation_activities, only: :destroy
   resources :activities, only: [:index, :update]
   resources :destinations, only: :index
   resources :users do
     resources :vacations, except: :show
   end
-  resources :vacations, only: :show
+  resources :vacations, only: [:show, :create, :destroy]
   resources :types do
     resources :activities, only: :show
   end

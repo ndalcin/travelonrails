@@ -48,6 +48,10 @@ class VacationsController < ApplicationController
   end
 
   def destroy
+    @vacation = Vacation.find(params[:id])
+    @vacation.delete
+    redirect_to user_vacations_path(current_user), notice: "Vacation Successfully Deleted"
+  end
 
   private
 

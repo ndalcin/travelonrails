@@ -6,21 +6,33 @@
 <h3>Click <%= link_to 'here', type_path(@activity.type) %> to see more <%= @activity.type.name.downcase%> activities)</h3>
 
 
-<% if current_user %>
+<% if current_user && !current_user.vacations.empty? %>
+
+
   <%= form_for @activity do |f| %>
-    <%= f.fields_for :vacations, @activity.vacations.build do |ff| %>
-      <%= ff.label "To add this activity to a new vacation, please give your vacation a name:" %>
+
+    <% if @activity.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% @activity.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <%= f.fields_for :vacation_activities, @activity.vacation_activities.build do |ff| %>
+
+      <%= ff.label "Please select one of your existing vacations to add this activity to" %>
       <br><br>
-      <%= ff.text_field :name %>
-      <% end %>
+      <%= ff.collection_select :vacation_id, @vacations, :id, :name %>
+      <br><br><br>
+      <%= ff.label "How many people will be participating?" %>
       <br><br>
-    <% if !current_user.vacations.empty? %>
-      <%= f.label "Or, select one of your existing vacations" %>
-      <br><br>
-      <%= f.collection_select :vacations, @vacations, :id, :name, include_blank: true %>
+      <%= ff.text_field :people, required: true %>
     <% end %>
     <br><br>
     <%= f.submit "Add Activity" %>
   <% end %>
-
 <% end %>

@@ -1,13 +1,33 @@
 <h1><%= @vacation.name%></h1>
+<%= link_to "Edit Vacation", edit_user_vacation_path(current_user, @vacation) %>
 <h2><%= current_user.name%>'s trip to <%= @vacation.destination.full_name %></h2>
 <h3>Leaving on: <%= @vacation.date%> for <%=@vacation.length%> days!</h3>
 <h3>Starting Budget: $<%= @vacation.budget %></h3>
 
-<%= link_to "Edit Vacation", edit_user_vacation_path(current_user, @vacation) %>
+<br>
+<br>
 
 <% if !@vacation.activities.empty? %>
   <h3>Cost of Activities: $<%=@vacation.activities_total%></h3>
   <h3><strong>Budget Remaining: $<%= @vacation.budget - @vacation.activities_total %></strong></h3>
+  <h3>Planned Activities</h3>
+  <ol>
+  <% @vacation.vacation_activities.each do |vacation_activity| %>
+    <li><h4><%= vacation_activity.activity.name %></h4></li>
+    <ul>
+      <li><h4>Number of People: <%= vacation_activity.people %> </h4></li>
+      <li><h4>Total cost of this activity: $<%= vacation_activity.total_cost %> ($<%= vacation_activity.activity.price%> per person)</h4></li>
+    </ul>
+    <%= button_to 'Delete', vacation_activity_path(vacation_activity), method: :delete %>
+  <% end %>
+</ol>
+  <h4><%= link_to 'Add more activities', activities_path %></h4>
+
 <% else %>
-  <h2>Click <%= link_to 'here', activities_path %> to start adding activities</h2>
+  <h2>You have no planned activities! Click <%= link_to 'here', activities_path %> to start adding some</h2>
 <% end %>
+
+<br>
+<br>
+
+<%= button_to "Delete Vacation", @vacation, method: "delete" %>
