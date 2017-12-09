@@ -9,7 +9,7 @@
 <% @destinations.each do |destination| %>
     <li><%= destination.full_name %></li>
     <% if current_user %>
-      <br><%= form_for @vacation do |f| %>
+      <br><%= form_for @vacation, :url => new_user_vacation_path(current_user, @vacation), method: :get do |f| %>
         <%= f.hidden_field :destination_id, value: destination.id %>
         <%= f.submit "I want to go here"%>
       <% end %>

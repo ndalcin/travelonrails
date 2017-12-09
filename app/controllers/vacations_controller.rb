@@ -5,26 +5,20 @@ class VacationsController < ApplicationController
   end
 
   def new
-    @vacation = Vacation.new
+    if params[:commit] == "I want to go here"
+      @vacation = Vacation.new(vacation_params)
+    else
+      @vacation = Vacation.new
+    end
   end
 
   def create
-    if params[:commit] == "I want to go here"
-      @vacation = Vacation.new(vacation_params)
-      @vacation.user = current_user
-      if @vacation.save
-        redirect_to edit_user_vacation_path(current_user, @vacation), notice: "Please fill in the empty fields"
-      else
-        redirect_to destinations_path
-      end
-    elsif !!vacation_params
-      @vacation = Vacation.new(vacation_params)
-      @vacation.user = current_user
-      if @vacation.save
-        redirect_to vacation_path(@vacation)
-      else
-        render "edit"
-      end
+    @vacation = Vacation.new(vacation_params)
+    @vacation.user = current_user
+    if @vacation.save
+      redirect_to vacation_path(@vacation)
+    else
+      render "edit", notice: "Please fill in all fields"
     end
   end
 
