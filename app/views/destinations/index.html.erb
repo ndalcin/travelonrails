@@ -11,7 +11,7 @@
     <% if current_user %>
       <br><%= form_for @vacation do |f| %>
         <%= f.hidden_field :destination_id, value: destination.id %>
-      <li><%= f.submit "I want to go here"%></li>
+        <%= f.submit "I want to go here"%>
       <% end %>
     <% end %>
     <br>

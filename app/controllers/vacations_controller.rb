@@ -9,11 +9,11 @@ class VacationsController < ApplicationController
   end
 
   def create
-    if params[:destination_id]
-      @vacation = Vacation.new(destination_id: params[:destination_id])
+    if params[:commit] == "I want to go here"
+      @vacation = Vacation.new(vacation_params)
       @vacation.user = current_user
       if @vacation.save
-        redirect_to edit_user_vacation_path(current_user, @vacation)
+        redirect_to edit_user_vacation_path(current_user, @vacation), notice: "Please fill in the empty fields"
       else
         redirect_to destinations_path
       end
