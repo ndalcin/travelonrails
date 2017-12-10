@@ -1,4 +1,5 @@
 class VacationsController < ApplicationController
+  before_action :set_vacation, only: [:show, :edit, :update, :destroy]
 
   def index
     @vacations = Vacation.all
@@ -23,12 +24,9 @@ class VacationsController < ApplicationController
   end
 
   def edit
-    @vacation = Vacation.find(params[:id])
   end
 
   def update
-
-    @vacation = Vacation.find(params[:id])
     @vacation.update(vacation_params)
     if @vacation.save
       redirect_to vacation_path(@vacation)
@@ -38,11 +36,9 @@ class VacationsController < ApplicationController
   end
 
   def show
-    @vacation = Vacation.find(params[:id])
   end
 
   def destroy
-    @vacation = Vacation.find(params[:id])
     @vacation.delete
     redirect_to user_vacations_path(current_user), notice: "Vacation Successfully Deleted"
   end
@@ -51,6 +47,10 @@ class VacationsController < ApplicationController
 
   def vacation_params
     params.require(:vacation).permit(:date, :destination_id, :name, :budget, :length)
+  end
+
+  def set_vacation
+    @vacation = Vacation.find(params[:id])
   end
 
 end
