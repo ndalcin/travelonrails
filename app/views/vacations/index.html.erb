@@ -1,16 +1,16 @@
 <% if current_user && !current_user.vacations.empty? %>
-<h1> <%= current_user.name%>'s Planned Vacations </h1>
-<h3><%= link_to 'Add More Vacations', new_user_vacation_path(current_user) %></h3>
-<br><br>
-<ol>
-  <% current_user.vacations.each do |vacation| %>
-      <li><%= link_to vacation.name, vacation_path(vacation) %> in <%=vacation.destination.full_name%></li>
-      <br><br>
-  <% end %>
-</ol>
+  <h1><%= current_user.name%>'s Planned Vacations </h1>
+  <h3><%= link_to 'Add More Vacations', new_user_vacation_path(current_user) %></h3>
+  <br><br>
+  <ol>
+    <% current_user.vacations.each do |vacation| %>
+        <li><%= link_to vacation.name, vacation_path(vacation) %> in <%=vacation.destination.full_name%></li>
+        <br><br>
+    <% end %>
+  </ol>
+
 
 <% elsif current_user && current_user.vacations.empty? %>
-
   <h2>Uh oh! You have no planned vacations!</h2>
   <h3>Click <%= link_to 'here', new_user_vacation_path(current_user) %> to start adding vacations</h3>
 
