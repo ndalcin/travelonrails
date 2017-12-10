@@ -15,10 +15,12 @@
 
   <% @vacation.vacation_activities.each do |vacation_activity| %>
 
-
     <%= render partial: 'vacation_activities', locals: {vacation_activity: vacation_activity} %>
 
+  <% end %>
 
+  <h4><%= link_to 'Add more activities', activities_path %></h4>
+  
 <% else %>
   <h2>You have no planned activities! Click <%= link_to 'here', activities_path %> to start adding some</h2>
 <% end %>

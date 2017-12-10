@@ -1,0 +1,4 @@
+<%= form_tag("/destinations", method: "get") do %>
+  <%= select_tag "location", options_for_select(["International", "Domestic"]), include_blank: true %>
+  <%= submit_tag "Filter" %>
+<% end %>

@@ -1,20 +1,22 @@
 <h1> Check out all of our great destinations! </h1>
 
 <h3>Filter Destinations:</h3>
-  <%= form_tag("/destinations", method: "get") do %>
-    <%= select_tag "location", options_for_select(["International", "Domestic"]), include_blank: true %>
-    <%= submit_tag "Filter" %>
-  <% end %>
+  <%= render partial: 'filter' %>
+
+
 <ol>
 <% @destinations.each do |destination| %>
     <li><%= destination.full_name %></li>
+
     <% if current_user %>
-      <br><%= form_for @vacation, :url => new_user_vacation_path(current_user, @vacation), method: :get do |f| %>
-        <%= f.hidden_field :destination_id, value: destination.id %>
-        <%= f.submit "I want to go here"%>
+      <br>
+      <%= form_for @vacation, :url => new_user_vacation_path(current_user, @vacation), method: :get do |f| %>
+          <%= f.hidden_field :destination_id, value: destination.id %>
+          <%= f.submit "I want to go here"%>
       <% end %>
     <% end %>
-    <br>
+  <br>
+  <br>
 <% end %>
 </ol>
 
