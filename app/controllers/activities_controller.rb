@@ -17,7 +17,7 @@ class ActivitiesController < ApplicationController
     if @activity.save
       redirect_to vacation_path(existing_vacation)
     else
-      redirect_to type_activity_path(@activity, @activity.type), notice: "Please fix your errors"
+      redirect_to type_activity_path(@activity, @activity.type), notice: "Please enter a whole number greater than 0 for number of participants"
     end
   end
 
