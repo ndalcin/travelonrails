@@ -12,14 +12,14 @@
   <%= form_for @activity do |f| %>
 
     <% if @activity.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% @activity.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+      <div class="error_messages">
+        <h2>Form is invalid</h2>
+        <ul>
+          <% @activity.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
 
     <%= f.fields_for :vacation_activities, @activity.vacation_activities.build do |ff| %>
@@ -30,7 +30,7 @@
       <br><br><br>
       <%= ff.label "How many people will be participating?" %>
       <br><br>
-      <%= ff.text_field :people, required: true %>
+      <%= ff.text_field :people %>
     <% end %>
     <br><br>
     <%= f.submit "Add Activity" %>

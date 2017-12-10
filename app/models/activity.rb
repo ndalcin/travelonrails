@@ -1,5 +1,3 @@
-
-
 class Activity < ApplicationRecord
   belongs_to :type
   has_many :vacation_activities
@@ -11,7 +9,6 @@ class Activity < ApplicationRecord
   def self.top_five
     Activity.order('rating DESC').limit(5)
   end
-
 
 
 end
