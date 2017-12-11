@@ -12,15 +12,15 @@
   <h3>Cost of Activities: $<%=@vacation.activities_total%></h3>
   <h3><strong>Budget Remaining: $<%= @vacation.budget - @vacation.activities_total %></strong></h3>
   <h3>Planned Activities</h3>
-
+<ol>
   <% @vacation.vacation_activities.each do |vacation_activity| %>
 
     <%= render partial: 'vacation_activities', locals: {vacation_activity: vacation_activity} %>
 
   <% end %>
-
+</ol>
   <h4><%= link_to 'Add more activities', activities_path %></h4>
-  
+
 <% else %>
   <h2>You have no planned activities! Click <%= link_to 'here', activities_path %> to start adding some</h2>
 <% end %>
