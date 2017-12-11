@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   get 'activities/top_five', to: 'activities#top_five', as: 'top_five'
-  resources :vacation_activities, only: :destroy
+
+  resources :vacation_activities
+
   resources :activities, only: [:index, :update]
   resources :destinations, only: :index
   resources :users do
