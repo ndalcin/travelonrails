@@ -35,6 +35,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'dotenv-rails'
 
+gem 'valid_email2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

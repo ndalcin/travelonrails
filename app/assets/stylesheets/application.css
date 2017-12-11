@@ -14,10 +14,14 @@
  *= require_self
  */
 
-div.field_with_errors input[type="number"]{
+div.field_with_errors input[type="email"] {
   border: 1px solid red;
 }
 
 div.field_with_errors input[type="text"]{
+  border: 1px solid red;
+}
+
+div.field_with_errors input[type="password"]{
   border: 1px solid red;
 }
