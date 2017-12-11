@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get 'activities/top_five', to: 'activities#top_five', as: 'top_five'
 
-  resources :vacation_activities
+  resources :vacation_activities, only: :destroy
 
   resources :activities, only: [:index, :update]
   resources :destinations, only: :index
