@@ -15,4 +15,4 @@ File an issue with a pull request
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License]: https://opensource.org/licenses/MIT
+The gem is available as open source under the terms of the <a href='https://opensource.org/licenses/MIT'> MIT License</a>
