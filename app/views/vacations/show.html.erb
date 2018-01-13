@@ -1,3 +1,8 @@
+<% if @vacation.broke? %>
+  <h1> YOU ARE BROKE. Up your budget, or get rid of activities! </h1>
+<% end %>
+
+
 <h1><%= @vacation.name%></h1>
 <%= link_to "Edit Vacation", edit_user_vacation_path(current_user, @vacation) %>
 <h2><%= current_user.name%>'s trip to <%= @vacation.destination.full_name %></h2>
@@ -10,7 +15,7 @@
 <% if !@vacation.activities.empty? %>
 
   <h3>Cost of Activities: $<%=@vacation.activities_total%></h3>
-  <h3><strong>Budget Remaining: $<%= @vacation.budget - @vacation.activities_total %></strong></h3>
+  <h3><strong>Budget Remaining: $<%= @vacation.budget_remaining %></strong></h3>
   <h3>Planned Activities</h3>
 <ol>
   <% @vacation.vacation_activities.each do |vacation_activity| %>

@@ -21,4 +21,13 @@ class Vacation < ApplicationRecord
     activities_total
   end
 
+  def budget_remaining
+    self.budget - self.activities_total
+  end
+
+  def broke?
+    true if self.budget_remaining < 0
+  end    
+
+
 end
