@@ -4,10 +4,17 @@
 
 
 <h1><%= @vacation.name%></h1>
-<%= link_to "Edit Vacation", edit_user_vacation_path(current_user, @vacation) %>
+
+
+<%= link_to "Prev", :class => "previous round", :"data-attribute" => @vacation.id %>
+<%= link_to "Next", :class => "next round", :"data-attribute" => @vacation.id  %>
+
+<br></br>
+
 <h2><%= current_user.name%>'s trip to <%= @vacation.destination.full_name %></h2>
 <h3>Leaving on: <%= @vacation.date%> for <%=@vacation.length%> days!</h3>
 <h3>Starting Budget: $<%= @vacation.budget %></h3>
+<%= link_to "Edit Vacation", edit_user_vacation_path(current_user, @vacation) %>
 
 <br>
 <br>
