@@ -27,7 +27,14 @@ class Vacation < ApplicationRecord
 
   def broke?
     true if self.budget_remaining < 0
-  end    
+  end
 
+  def next
+    user.vacations.where('id > ?', self.id).first
+  end
+
+  def previous
+    user.vacations.where('id < ?', self.id).last
+  end
 
 end

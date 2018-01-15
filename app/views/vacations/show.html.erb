@@ -5,9 +5,12 @@
 
 <h1><%= @vacation.name%></h1>
 
-
-<%= link_to "Prev", :class => "previous round", :"data-attribute" => @vacation.id %>
-<%= link_to "Next", :class => "next round", :"data-attribute" => @vacation.id  %>
+<% if @vacation.previous %>
+  <%= link_to "Prev", :class => "previous round", :"data-attribute" => @vacation.previous.id %>
+  <% end %>
+<% if @vacation.next %>
+  <%= link_to "Next", :class => "next round", :"data-attribute" => @vacation.next.id  %>
+<% end %>
 
 <br></br>
 
