@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
-
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ 
 div.field_with_errors input[type="email"] {
   border: 1px solid red;
 }
@@ -60,8 +62,4 @@ a:hover {
 .next {
     background-color: #4CAF50;
     color: white;
-}
-
-.round {
-    border-radius: 50%;
 }
