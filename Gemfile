@@ -37,9 +37,9 @@ gem 'dotenv-rails'
 
 gem 'valid_email2'
 
-# for bootstrap
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'active_model_serializers'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
