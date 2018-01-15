@@ -1,0 +1,36 @@
+
+<div id="app" class="container">
+  <nav class="navbar navbar-expand-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/destinations">Destinations</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/activities">Activities</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <% if current_user %>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/<%= current_user.id %>/vacations">My Vacations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Log Out</a>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/github">GitHub Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signup">Sign Up</a>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+</div>

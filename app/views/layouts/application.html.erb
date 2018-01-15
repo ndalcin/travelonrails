@@ -10,12 +10,11 @@
   </head>
 
   <body>
+    <%= render 'layouts/navbar' %>
     <!-- flash messages -->
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    
-    <%= render 'layouts/right_nav' %>
-    <%= render 'layouts/header' %>
+
 
     <%= yield %>
 
