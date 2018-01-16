@@ -10,8 +10,9 @@ $(function() {
 })
 
 function attachListeners(){
-  $("a.next").click(function(){
-    alert("Testing NEXT!!!")
+  $(".next").click(function(){
+    var nextId = parseInt($(".next").attr("data-id"))
+    console.log(nextId)
   })
   $("a.previous").click(function(){
     alert("Testing PREVIOUS!!!")
