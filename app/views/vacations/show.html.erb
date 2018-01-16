@@ -1,22 +1,16 @@
-<% if @vacation.broke? %>
-  <h1> YOU ARE BROKE. Up your budget, or get rid of activities! </h1>
-<% end %>
 
+<h1 id="vacation_name"><%= @vacation.name%></h1>
 
-<h1><%= @vacation.name%></h1>
+<%= render partial: 'next_and_previous_buttons', locals: {vacation: @vacation} %>
 
-<% if @vacation.previous %>
-  <a href="#" class="previous" data-id="<%=@vacation.previous.id%>">&laquo; Previous</a>
-<% end %>
-<% if @vacation.next %>
-  <a href="#" class="next" data-id="<%=@vacation.next.id%>">Next &raquo;</a>
-<% end %>
+<br>
+<br>
 
-<br></br>
+<b>Destination</b><p id="destination_name"><%= @vacation.destination.full_name %></p>
+<b>Date:</b> <p id="date"><%= @vacation.date%></p>
+<b>Length:</b> <p id="length"><%=@vacation.length%> days!</p>
+<b>Starting Budget:</b> <p id="vacation_budget"> $<%= @vacation.budget %></p>
 
-<h2><%= current_user.name%>'s trip to <%= @vacation.destination.full_name %></h2>
-<h3>Leaving on: <%= @vacation.date%> for <%=@vacation.length%> days!</h3>
-<h3>Starting Budget: $<%= @vacation.budget %></h3>
 <%= link_to "Edit Vacation", edit_user_vacation_path(current_user, @vacation) %>
 
 <br>

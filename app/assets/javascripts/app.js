@@ -10,9 +10,13 @@ $(function() {
 })
 
 function attachListeners(){
-  $(".next").click(function(){
-    var nextId = parseInt($(".next").attr("data-id"))
-    console.log(nextId)
+  $(".next").click(function(e){
+    e.preventDefault();
+    var nextId = parseInt($(".next").attr("data-id"));
+    $.get("/vacations/" + nextId + ".json", function(data){
+      console.log(data)
+      debugger
+    })
   })
   $("a.previous").click(function(){
     alert("Testing PREVIOUS!!!")
