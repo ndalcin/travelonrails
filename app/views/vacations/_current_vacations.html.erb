@@ -4,6 +4,7 @@
 <ol>
   <% current_user.vacations.each do |vacation| %>
       <li><%= link_to vacation.name, vacation_path(vacation) %> in <%=vacation.destination.full_name%></li>
+      <%= button_to "Delete Vacation", vacation, method: "delete" %>
       <br><br>
   <% end %>
 </ol>
