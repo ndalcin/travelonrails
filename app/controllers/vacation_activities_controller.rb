@@ -3,7 +3,7 @@ class VacationActivitiesController < ApplicationController
 
   def index
     vacation = Vacation.find(params[:vacation_id])
-    @vacation_activities = vacation.activities
+    @vacation_activities = vacation.vacation_activities
     render json: @vacation_activities
   end
 
