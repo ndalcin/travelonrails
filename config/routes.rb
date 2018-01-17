@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :vacations, except: :show
   end
   resources :vacations, only: [:create, :destroy]
-  resrouces :vacations, only: :show do
+  resources :vacations, only: :show do
     resources :vacation_activities, only: :index #added this to render has_many relationship and 'list of things' via jQuery
   end
 

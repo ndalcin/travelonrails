@@ -15,4 +15,8 @@ class VacationActivitiesController < ApplicationController
     redirect_to vacation_path(vacation)
   end
 
+
+  def vacation_activity_params
+    params.permit(:vacation_id)
+  end
 end
