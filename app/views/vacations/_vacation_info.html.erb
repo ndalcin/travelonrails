@@ -1,5 +1,5 @@
-<b>Destination</b><p id="destination_name"><%= vacation.destination.full_name %></p>
+<b>Destination</b><p id="destination"><%= vacation.destination.full_name %></p>
 <b>Date:</b> <p id="date"><%= vacation.date%></p>
-<b>Length:</b> <p id="length"><%=vacation.length%> days!</p>
+<b>Length in days:</b> <p id="length"><%=vacation.length%></p>
 <b>Starting Budget:</b><p id="vacation_budget"> $<%= vacation.budget %></p>
-<b>Cost of Activities:</b><p>$<%=vacation.activities_total%></p>
+<b>Cost of Activities:</b><p id="activities_total">$<%=vacation.activities_total%></p>
