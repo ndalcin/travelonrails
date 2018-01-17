@@ -2,6 +2,7 @@ class VacationActivitiesController < ApplicationController
 
 
   def index
+    binding.pry
     vacation = Vacation.find(params[:vacation_id])
     @vacation_activities = vacation.vacation_activities
     render json: @vacation_activities

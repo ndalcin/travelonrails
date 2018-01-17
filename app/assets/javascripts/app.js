@@ -30,7 +30,8 @@ function attachListeners(){
 
   $("#show_activities").click(function(e){
     $("#show_activities").hide(); //hide the show activities link when activities are shown
-    $.get(this).success(function(v_activities){
+    console.log(this.href)
+    $.get(this.href).success(function(v_activities){
       $.each(v_activities, function(v_activity){
         debugger
         $("ol#display_vacation_activities").append(
