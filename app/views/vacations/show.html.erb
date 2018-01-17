@@ -12,12 +12,13 @@
 
 <% if !@vacation.activities.empty? %>
 
-  <a href="/vacations/<%=@vacation.id%>/vacation_activities" id="show_activities">Click to See Planned Activities</a>
+  <%= link_to "Click to See Planned Activities", vacation_vacation_activities_path(@vacation), :id => "show_activities" %>
 
 
-<ol id= "vacation_activities">
+<ol id= "display_vacation_activities">
   <!-- vacation activities will be shown here -->
 </ol>
+
   <h4><%= link_to 'Add more activities', activities_path %></h4>
 
 <% else %>

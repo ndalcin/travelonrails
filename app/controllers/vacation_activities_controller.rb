@@ -2,9 +2,9 @@ class VacationActivitiesController < ApplicationController
 
 
   def index
-    byebug
-    vacation = Vacation.find(params[:id])
+    vacation = Vacation.find(params[:vacation_id])
     @vacation_activities = vacation.activities
+    render json: @vacation_activities
   end
 
 

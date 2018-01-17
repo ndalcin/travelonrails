@@ -29,8 +29,19 @@ function attachListeners(){
   })
 
   $("#show_activities").click(function(e){
-    alert("you clicked show activities!");
-    $("#show_activities"); //hide the show activities link when activities are shown
-    $.get(this.href).success
+    $("#show_activities").hide(); //hide the show activities link when activities are shown
+    $.get(this).success(function(v_activities){
+      $.each(v_activities, function(v_activity){
+        debugger
+        $("ol#display_vacation_activities").append(
+          "<li>" +
+          "<b>" + v_activity.activity.name + "</b><br>" +
+          "<b>Number of People: </b>" + v_activity.people + "<br>" +
+          "<b>Total cost of this activity: </b>$" + v_activity.total_cost + "($" + v_activity.activity.price + "per person)" +
+          "</li>"
+        )
+      })
+    })
+    e.preventDefault();
   })
 }
