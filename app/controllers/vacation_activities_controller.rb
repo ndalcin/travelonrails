@@ -1,5 +1,13 @@
 class VacationActivitiesController < ApplicationController
 
+
+  def index
+    byebug
+    vacation = Vacation.find(params[:id])
+    @vacation_activities = vacation.activities
+  end
+
+
   def destroy
     @vacation_activity = VacationActivity.find(params[:id])
     vacation = @vacation_activity.vacation

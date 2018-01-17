@@ -12,7 +12,7 @@ $(document).ready(function (){
 function attachListeners(){
   $(".next").click(function(e){
     e.preventDefault();
-    var nextId = parseInt($(".next").attr("data-id"));
+    var nextId = parseInt($(".next").attr("data-id")) + 1;
     $.get("/vacations/" + nextId + ".json", function(data){
       console.log(data)
       $("#vacation_name").text(data["name"]);
@@ -21,9 +21,16 @@ function attachListeners(){
       $("#length").text(data["length"]);
       $("#vacation_budget").text("$" + data["budget"]);
       $("#activities_total").text("$" + data["activities_total"]);
+      $(".next").attr("data-attribute", data["id"])
     })
   })
   $("a.previous").click(function(){
-    alert("Testing PREVIOUS!!!")
+    alert("Testing PREVIOUS!!!");
+  })
+
+  $("#show_activities").click(function(e){
+    alert("you clicked show activities!");
+    $("#show_activities"); //hide the show activities link when activities are shown
+    $.get(this.href).success
   })
 }
