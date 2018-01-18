@@ -1,26 +1,25 @@
 
 <h1 id="vacation_name"><%= @vacation.name%></h1>
-<%= link_to "Edit Vacation", edit_vacation_path(current_user, @vacation) %>
-<br>
+
 <%= render partial: 'next_and_previous_buttons', locals: {vacation: @vacation} %>
 
-<br>
-<br>
-
 <%= render partial: 'vacation_info', locals: {vacation: @vacation}%>
+<br>
+<br>
 
+<% if @vacation.activities.empty? %>
 
-<% if !@vacation.activities.empty? %>
+  <h3>You have no planned activities!</h3>
+
+<% else %>
 
   <%= link_to "Click to See Planned Activities", show_vacation_activities_path(@vacation), :id => "show_activities" %>
 
+  <ol id= "display_vacation_activities">
 
-<ol id= "display_vacation_activities">
   <!-- vacation activities will be shown here -->
-</ol>
+  </ol>
 
-  <h4><%= link_to 'Add more activities', activities_path %></h4>
-
-<% else %>
-  <h2>You have no planned activities! Click <%= link_to 'here', activities_path %> to start adding some</h2>
 <% end %>
+
+  <h4><%= link_to 'Add activities', activities_path %></h4>
