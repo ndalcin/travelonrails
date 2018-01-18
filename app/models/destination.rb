@@ -1,5 +1,6 @@
 class Destination < ApplicationRecord
-  belongs_to :vacations
+  has_many :vacations
+  has_many :users, through: :vacations
 
   def self.domestic
     where(country: "USA")

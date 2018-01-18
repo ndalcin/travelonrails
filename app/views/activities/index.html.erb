@@ -1,9 +1,8 @@
-<h1>See all of the great activities that we offer</h1>
-<h2>You can find these activities in ALL vacation destinations</h2>
-<h3>Check out the <%= link_to "Top Five Rated Activities", top_five_path %></h3> 
+<h1>Check out these activities that our users have enjoyed!</h1>
+<h2>Also, take a look at <%= link_to "Top Five Rated Activities", top_five_path %></h2>
 
 <% @activities.each do |activity| %>
   <ul>
-    <strong><%= link_to activity.name, type_activity_path(activity.type.id, activity.id) %></strong>
+    <strong><%= link_to activity.name, activity_path(activity.id) %></strong>
   </ul>
   <% end %>

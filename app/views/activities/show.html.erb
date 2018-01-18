@@ -1,9 +1,9 @@
 <h1><%=@activity.name%></h1>
-<h2>You can find this activity at ANY destination</h2>
-
+<% if @activity.description %>
+  <h2><%= @activity.description %></h2>
+<% end %>
 <h3>$<%= @activity.price %> per person</h3>
 <h3>Rating: <%= @activity.rating %>/10</h3>
-<h3>Click <%= link_to 'here', type_path(@activity.type) %> to see more <%= @activity.type.name.downcase%> activities)</h3>
 
 
 <% if current_user && !current_user.vacations.empty? %>
@@ -22,7 +22,7 @@
       </div>
     <% end %>
 
-    <%= f.fields_for :vacation_activities, @activity.vacation_activities.build do |ff| %>
+    <%= f.fields_for :activity, @activity.vacation_activities.build do |ff| %>
       <div class="field">
         <%= ff.label "Please select one of your existing vacations to add this activity to" %>
         <br>

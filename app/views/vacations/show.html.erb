@@ -1,6 +1,6 @@
 
 <h1 id="vacation_name"><%= @vacation.name%></h1>
-<%= link_to "Edit Vacation", edit_user_vacation_path(current_user, @vacation) %>
+<%= link_to "Edit Vacation", edit_vacation_path(current_user, @vacation) %>
 <br>
 <%= render partial: 'next_and_previous_buttons', locals: {vacation: @vacation} %>
 

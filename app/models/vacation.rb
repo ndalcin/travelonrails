@@ -3,7 +3,7 @@
 class Vacation < ApplicationRecord
   belongs_to :user
   has_many :activities
-  has_many :destinations, through: :activities
+  belongs_to :destination
 
   validates :name, presence: true
   validates :budget, presence: true, :numericality => { :only_integer => true, :greater_than => 0 }
