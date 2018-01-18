@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :destinations, only: :index
 
   resources :users do
-    resources :vacations, only: :new
+    resources :vacations, only: [:index, :new, :create]
   end
 
   resources :vacations do
