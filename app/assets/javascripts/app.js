@@ -1,13 +1,8 @@
 $(document).ready(function (){
   attachListeners();
 })
-// With turbolinks the javascript is only loaded once.
-// This will fix issues of javascript not executing on a link_to click || back button click.
-// $(function() {
-//   $(document).on('turbolinks:load', function() {
-//     attachListeners();
-//   })
-// })
+
+
 
 function attachListeners(){
   $(".next").click(function(e){
@@ -29,8 +24,10 @@ function attachListeners(){
   })
 
   $("#show_activities").click(function(e){
+    e.preventDefault();
     $("#show_activities").hide(); //hide the show activities link when activities are shown
     console.log(this.href)
+    
     $.get(this.href).success(function(v_activities){
       $.each(v_activities, function(v_activity){
         debugger
@@ -43,6 +40,6 @@ function attachListeners(){
         )
       })
     })
-    e.preventDefault();
+
   })
 }

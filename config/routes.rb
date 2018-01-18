@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   get 'activities/top_five', to: 'activities#top_five', as: 'top_five'
+  get 'vacations/:id/vacation_activities', to: 'vacation_activities#index', as: 'show_vacation_activities'
 
   resources :vacation_activities, only: :destroy
 
@@ -17,10 +18,8 @@ Rails.application.routes.draw do
   resources :users do
     resources :vacations, except: :show
   end
-  resources :vacations, only: [:create, :destroy]
-  resources :vacations, only: :show do
-    resources :vacation_activities, only: :index #added this to render has_many relationship and 'list of things' via jQuery
-  end
+  resources :vacations, only: [:show, :create, :destroy]
+
 
   resources :types do
     resources :activities, only: :show
