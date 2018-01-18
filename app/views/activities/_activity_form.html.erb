@@ -11,20 +11,19 @@
     </div>
   <% end %>
 
-  <%= f.fields_for :activity, @activity.vacation_activities.build do |ff| %>
-    <div class="field">
-      <%= ff.label "Please select one of your existing vacations to add this activity to" %>
-      <br>
-      <%= ff.collection_select :vacation_id, @vacations, :id, :name %>
-    </div>
+  <div class="field">
+    <%= f.label "How many people will be participating?" %>
     <br>
-    <div class="field">
-      <%= ff.label "How many people will be participating?" %>
-      <br>
-      <%= ff.text_field :people, required: true %>
-    </div>
-  <% end %>
+    <%= f.text_field :people %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Please select one of your existing vacations to add this activity to" %>
+    <br>
+    <%= f.collection_select :vacation_id, @vacations, :id, :name %>
+  </div>
   <br>
+
   <%= f.submit "Add Activity" %>
 
 <% end %>
