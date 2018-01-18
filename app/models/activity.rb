@@ -1,7 +1,6 @@
 class Activity < ApplicationRecord
   belongs_to :type
   belongs_to :vacation
-  belongs_to :destination
 
   # def vacation_activities_attributes=(va_attrs)
   #   va_attrs.values.each do |attribute|

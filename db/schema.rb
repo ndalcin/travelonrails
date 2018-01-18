@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20171204133613) do
     t.integer "price"
     t.integer "type_id"
     t.integer "rating"
-    t.integer "destination_id"
     t.integer "vacation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,6 +48,7 @@ ActiveRecord::Schema.define(version: 20171204133613) do
     t.string "name"
     t.string "date"
     t.integer "user_id"
+    t.integer "destination_id"
     t.integer "budget"
     t.integer "length"
     t.datetime "created_at", null: false
