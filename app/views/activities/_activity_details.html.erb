@@ -1,0 +1,9 @@
+<h3 id="activity_name"><%= activity.name %></h3>
+<% if activity.description %>
+  <h4 id="activity_description"><%= activity.description %></h4>
+<% end %>
+<br>
+<b>Price: </b>
+  <p id="activity_price">$<%= activity.price %> per person</p>
+<b>Rating: </b>
+  <p id="activity_rating"> <%= activity.rating %> </p>

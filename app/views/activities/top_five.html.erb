@@ -2,11 +2,12 @@
 <ol>
 <% @activities.each do |activity| %>
 
-  <li><h2><%= link_to activity.name, activity_path(activity) %></h2></li>
+  <li><%= render partial: 'activity_details', locals: {activity: activity} %></li>
+  <!-- <li><h2><%= link_to activity.name, activity_path(activity) %></h2></li>
   <ul>
   <h3>$<%= activity.price %> per person</h3>
   <h3>Rating: <%= activity.rating %>/10</h3>
-  </ul>
+  </ul> -->
 
 <% end %>
 </ol>
