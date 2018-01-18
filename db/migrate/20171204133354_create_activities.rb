@@ -5,6 +5,8 @@ class CreateActivities < ActiveRecord::Migration[5.1]
       t.integer :price
       t.integer :type_id
       t.integer :rating
+      t.integer :destination_id
+      t.integer :vacation_id
       t.timestamps
     end
   end
