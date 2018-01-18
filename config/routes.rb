@@ -9,20 +9,21 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   get 'activities/top_five', to: 'activities#top_five', as: 'top_five'
-  get 'vacations/:id/vacation_activities', to: 'vacation_activities#index', as: 'show_vacation_activities'
 
-  resources :vacation_activities, only: :destroy
+  resources :activities, only: :index
 
-  resources :activities, only: [:index, :update]
   resources :destinations, only: :index
-  resources :users do
-    resources :vacations, except: :show
-  end
-  resources :vacations, only: [:show, :create, :destroy]
 
+  resources :users do
+    resources :vacations, only: :index
+  end
+
+  resources :vacations do
+    resources :activities
+  end
 
   resources :types do
-    resources :activities, only: :show
+    resources :activities, only: :index
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
