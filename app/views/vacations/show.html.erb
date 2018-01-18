@@ -4,12 +4,10 @@
 <%= render partial: 'next_and_previous_buttons', locals: {vacation: @vacation} %>
 
 <%= render partial: 'vacation_info', locals: {vacation: @vacation}%>
-<br>
-<br>
 
 <% if @vacation.activities.empty? %>
 
-  <h3>You have no planned activities!</h3>
+  <h3>You have no planned activities! Add some:</h3>
 
 <% else %>
 
@@ -22,4 +20,4 @@
 
 <% end %>
 
-  <h4><%= link_to 'Add activities', activities_path %></h4>
+<%= render partial: '/activities/activity_form', locals: {:@activity => @vacation.activities.build}%>

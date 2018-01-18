@@ -1,6 +1,14 @@
-<b>Destination</b><p id="destination"><%= vacation.destination.full_name %></p>
-<b>Date:</b> <p id="date"><%= vacation.date%></p>
-<b>Length in days:</b> <p id="length"><%=vacation.length%></p>
-<b>Starting Budget:</b><p id="vacation_budget"> $<%= vacation.budget %></p>
-<b>Cost of Activities:</b><p id="activities_total">$<%=vacation.activities_total%></p>
-<%= link_to "Edit Vacation", edit_vacation_path(current_user, vacation) %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <b>Destination</b><p id="destination"><%= vacation.destination.full_name %></p>
+      <b>Date:</b> <p id="date"><%= vacation.date%></p>
+      <b>Length in days:</b> <p id="length"><%=vacation.length%></p>
+    </div>
+    <div class="col">
+      <b>Starting Budget:</b><p id="vacation_budget"> $<%= vacation.budget %></p>
+      <b>Cost of Activities:</b><p id="activities_total">$<%=vacation.activities_total%></p>
+      <b>Changes?</b><%= link_to "Edit", edit_vacation_path(current_user, vacation) %>
+    </div>
+  </div>
+</div>

@@ -15,7 +15,7 @@ class Vacation < ApplicationRecord
   def activities_total
     activities_total = 0
     self.activities.each do |activity|
-      activities_total += activity.price * activity.people
+      activities_total += (activity.price * activity.people)
     end
     activities_total
   end
