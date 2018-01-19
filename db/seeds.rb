@@ -30,8 +30,8 @@ destinations_list.each do |destination|
   Destination.create(city: destination[0], country: destination[1])
 end
 
-Vacation.create(name: "Super Fun Vacay!", user_id: 1, destination_id: 8, budget: 1000)
-Vacation.create(name: "British Invasion", user_id: 2, destination_id: 13, budget: 2000)
+Vacation.create(name: "Super Fun Vacay!", user_id: 1, destination_id: 8, budget: 1000, people: 2)
+
 
 types_list = [
   "Museum", "Food", "Exercise", "Sightseeing", "Sporting Event", "Relax", "Social"
@@ -59,5 +59,5 @@ activities_list = [
 ]
 
 activities_list.each do |activity|
-  Activity.create(name: activity[0], price: activity[1])
+  Activity.create(name: activity[0], price: activity[1], vacation_id: 1)
 end

@@ -1,36 +1,39 @@
+<div class="container">
+  <%= form_for @vacation do |f| %>
 
-<%= form_for @vacation do |f| %>
+  <% if @vacation.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% @vacation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<% if @vacation.errors.any? %>
-  <div class="error_messages">
-    <h2>Form is invalid</h2>
-    <ul>
-      <% @vacation.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-  <div class="field">
-    <%= f.label "Where would you like to go?" %>
+    <div class="field">
+      <%= f.label "Where would you like to go?" %>
+      <br>
+      <%= f.collection_select :destination_id, Destination.all, :id, :full_name, include_blank: true %>
+    </div>
     <br>
-    <%= f.collection_select :destination_id, Destination.all, :id, :full_name, include_blank: true %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label "Vacation Name" %><br />
-    <%= f.text_field :name %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label "What is your budget? (Please input number in dollars)" %><br />
-    <%= f.number_field :budget %>
-  </div>
-  <div class="field">
-    <%= f.label "How many people?" %><br />
-    <%= f.number_field :people %>
-  </div>
-  <br>
-  <div class="actions"><%= f.submit %></div>
-<% end %>
+    <div class="field">
+      <%= f.label "Vacation Name" %></br>
+      <%= f.text_field :name %>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.label "What is your budget? (Please input number in dollars)" %></br>
+      <%= f.text_field :budget %>
+    </div>
+    <div class="field">
+      <%= f.label "How many people?" %></br>
+      <%= f.text_field :people %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

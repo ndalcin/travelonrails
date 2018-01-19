@@ -8,6 +8,7 @@ class ActivitiesController < ApplicationController
   def index
     @activities = current_user.activities
     @activity = Activity.new
+    @type = @activity.types.build
   end
 
   def show

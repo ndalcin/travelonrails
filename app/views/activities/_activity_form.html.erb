@@ -22,31 +22,16 @@
       <%= f.text_field :name %>
     </div>
     <div class="field">
-      <%= f.label "Description" %>
-      <br>
-      <%= f.text_area :description %>
-    </div>
-    <div class="field">
       <%= f.label "$$$ Per Person" %>
       <br>
       <%= f.text_field :price %>
     </div>
-    <!-- <div class="field">
-      <%= f.label "Rating (on a scale from one to ten, how excited are you to do this?)" %>
-      <br>
-      <%= f.text_field :rating %>
-    </div>
-    <div class="field">
-      <%= f.label "How many people will be participating?" %>
-      <br>
-      <%= f.text_field :people %>
-    </div> -->
     <div class="field">
       <%= f.label "What type of activity is this? Select from below and/or create your own." %>
       <br>
-      <%= f.collection_check_boxes :type_ids, Type.all, :id, :name %>
+      <%= f.collection_check_boxes :types, Type.all, :id, :name %>
       <br>
-      <%= f.fields_for :types, @activity.types.build do |ff| %>
+      <%= f.fields_for :type, @type do |ff| %>
          <%= ff.text_field :name %>
       <% end %>
     </div>

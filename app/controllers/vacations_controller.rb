@@ -3,6 +3,7 @@ class VacationsController < ApplicationController
 
   def index
     @vacations = Vacation.all
+    @vacation = Vacation.new
   end
 
   def new
