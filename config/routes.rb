@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'activities/top_five', to: 'activities#top_five', as: 'top_five'
   get 'activities/list', to: 'activities#list', as: 'activities_list'
+  # get 'users/activities', to: 'activities#user_list', as: 'all_user_activities'
 
   resources :activities, only: [:show, :create, :edit, :update]
 

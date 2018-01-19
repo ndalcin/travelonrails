@@ -7,6 +7,7 @@ $(document).ready(function (){
 function attachListeners(){
   nextActivity();
   previousActivity();
+  addActivity();
 }
 
 function nextActivity(){
@@ -56,18 +57,32 @@ function previousActivity(){
   })
 }
 
-// function appendTypes(typesObject){
-//   types.forEach(function(type){
-//     $(".activity_types").text(type.name + "<br>");
-//   })
-// }
+function addActivity(){
+  $("form#new_activity").submit(function(e){
+     e.preventDefault();
+     // don't actually submit this form
+     alert("clicked but not submitted!")
+     var values = $(this).serialize();
+     var posting = $.post('/activities', values);
+     posting.done(function(data){
+        console.log(data)
+     //
+     // debugger
+     //
+     // $.ajax({
+     //   type:"POST",
+     //   url:pageURL
+     })
+  })
+}
+
 
 
   // $("#show_activities").click(function(e){
   //   e.preventDefault();
   //   $("#show_activities").hide(); //hide the show activities link when activities are shown
   //   console.log(this.href)
-  //
+  // })
   //   $.get(this.href).success(function(v_activities){
   //     $.each(v_activities, function(v_activity){
   //       debugger

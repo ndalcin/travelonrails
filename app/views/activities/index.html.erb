@@ -6,10 +6,7 @@
     <b>To start adding activities, first plan a vacation!</b><br>
     <b>Click <%= link_to 'here', new_user_vacation_path(current_user) %> to start adding vacations</b>
   <% else %>
-
-  <%= link_to "Load All Planned Activities", user_activities_path(current_user), id: "load_users_activities" %>
-
-
+    <br>
     <% @activities.each do |activity| %>
       <%= render partial: 'activity_details', locals: {activity: activity} %>
       <div class="container">
@@ -21,7 +18,8 @@
 
   <h5>Add some more activities to your vacations! </h5>
   <br>
-    <%= render partial: 'activity_form' %>
+    <%= render 'activity_form' %>
 
   <% end %>
+
 </div>
