@@ -14,8 +14,7 @@ class VacationsController < ApplicationController
   end
 
   def create
-    @vacation = Vacation.new(vacation_params)
-    @vacation.user = current_user
+    @vacation = current_user.vacations.new(vacation_params)
     if @vacation.save
       redirect_to vacation_path(@vacation)
     else
@@ -24,6 +23,7 @@ class VacationsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -36,10 +36,10 @@ class VacationsController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.html
-      format.json {render json: @vacation}
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.json {render json: @vacation}
+    # end
   end
 
   def destroy
@@ -54,6 +54,7 @@ class VacationsController < ApplicationController
   end
 
   def set_vacation
+    # raise params.inspect
     @vacation = Vacation.find(params[:id])
   end
 

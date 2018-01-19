@@ -1,4 +1,4 @@
-<%= form_for [@vacation, @activity] do |f| %>
+<%= form_for @activity do |f| %>
 
   <% if @activity.errors.any? %>
     <div class="error_messages">
@@ -10,7 +10,11 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+    <%= f.label "Start by selecting one of your vacations" %>
+    <br>
+    <%= f.collection_select :vacation_id, current_user.vacations, :id, :name %>
+  </div>
   <div class="field">
     <%= f.label "Name" %>
     <br>
@@ -35,6 +39,15 @@
     <%= f.label "How many people will be participating?" %>
     <br>
     <%= f.text_field :people %>
+  </div>
+  <div class="field">
+    <%= f.label "What type of activity is this? Select from below, or create your own." %>
+    <br>
+    <%= f.collection_select :type_id, Type.all, :id, :name, include_blank: true %>
+    <br>
+    <%= f.fields_for :type, Type.new do |ff| %>
+       <%= ff.text_field :name %>
+    <% end %>
   </div>
   <br>
 

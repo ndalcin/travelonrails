@@ -11,7 +11,7 @@
 
 <% else %>
 
-  <%= link_to "Click to See Planned Activities", show_vacation_activities_path(@vacation), :id => "show_activities" %>
+  <%= link_to "Click to See Planned Activities", vacation_activities_path(@vacation), :id => "show_activities" %>
 
   <ol id= "display_vacation_activities">
 
@@ -19,5 +19,3 @@
   </ol>
 
 <% end %>
-
-<%= render partial: '/activities/activity_form', locals: {:@activity => @vacation.activities.build}%>

@@ -1,5 +1,5 @@
 
-<%= form_for ([current_user, @vacation]) do |f| %>
+<%= form_for @vacation do |f| %>
 
 <% if @vacation.errors.any? %>
   <div class="error_messages">

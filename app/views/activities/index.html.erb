@@ -1,8 +1,11 @@
-<h1>Check out these activities that our users have enjoyed!</h1>
-<h2>Also, take a look at <%= link_to "Top Five Rated Activities", top_five_path %></h2>
+<h2><%= current_user.name %>'s Planned Activities</h2>
 
+<%= link_to "Load All Planned Activities", user_activities_path(current_user), id: "load_users_activities" %>
+
+<ul>
 <% @activities.each do |activity| %>
-  <ul>
-    <strong><%= link_to activity.name, activity_path(activity.id) %></strong>
-  </ul>
-  <% end %>
+  <li><%= render partial: 'activity_details', locals: {activity: activity} %></li>
+<% end %>
+</ul>
+
+<%= render partial: 'activity_form' %>

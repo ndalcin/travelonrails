@@ -1,3 +1,3 @@
 <%= render partial: 'activity_details', locals: {activity: @activity} %>
 
-<%= link_to "I want to do this on my vacation!", user_vacations_path(current_user), id: "add_activity_to_vacation" %>
+<%= link_to "I want to do this", user_activities_path(current_user), id: "add_activity_to_vacation" %>

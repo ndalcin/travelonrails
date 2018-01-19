@@ -8,7 +8,7 @@
     <div class="col">
       <b>Starting Budget:</b><p id="vacation_budget"> $<%= vacation.budget %></p>
       <b>Cost of Activities:</b><p id="activities_total">$<%=vacation.activities_total%></p>
-      <b>Changes?</b><%= link_to "Edit", edit_vacation_path(current_user, vacation) %>
+      <b>Changes?</b><%= link_to "Edit", edit_vacation_path(vacation) %>
     </div>
   </div>
 </div>

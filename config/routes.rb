@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   get 'activities/top_five', to: 'activities#top_five', as: 'top_five'
+  get 'activities/list', to: 'activities#list', as: 'activities_list'
 
-  resources :activities, only: [:index, :show]
+  resources :activities, only: [:show, :create]
 
   resources :destinations, only: :index
 
@@ -26,6 +27,9 @@ Rails.application.routes.draw do
     resources :activities, only: :index
   end
 
+  resources :users do
+    resources :activities, only: :index
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end

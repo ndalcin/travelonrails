@@ -1,8 +1,13 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :update]
 
-  def index
+  def list
     @activities = Activity.limit(10)
+  end
+
+  def index
+    @activities = current_user.activities
+    @activity = Activity.new
   end
 
   def show
@@ -12,12 +17,12 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-    @activity = Activity.new
+
   end
 
   def create
-    vacation = Vacation.find(params[:vacation_id])
-    @activity = vacation.activities.build(activity_params)
+    byebug
+    @activity = Activity.new(activity_params)
     byebug
     if @activity.save
       redirect_to vacation_path(vacation)
@@ -42,7 +47,7 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:name, :description, :price, :rating, :people)
+    params.require(:activity).permit(:type_attributes, :type_id, :name, :description, :price, :rating, :people, :vacation_id)
   end
 
   def set_activity
