@@ -43,9 +43,9 @@
   <div class="field">
     <%= f.label "What type of activity is this? Select from below, or create your own." %>
     <br>
-    <%= f.collection_select :type_id, Type.all, :id, :name, include_blank: true %>
+    <%= f.collection_select :types, Type.all, :id, :name, include_blank: true %>
     <br>
-    <%= f.fields_for :type, Type.new do |ff| %>
+    <%= f.fields_for :type, @activity.types.build do |ff| %>
        <%= ff.text_field :name %>
     <% end %>
   </div>
