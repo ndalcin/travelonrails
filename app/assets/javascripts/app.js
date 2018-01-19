@@ -19,10 +19,8 @@ function nextActivity(){
       var typeNames = data.types
       var div = $(".append_types")
       typeNames.forEach(function(type){
-        div.append("<i>"+type.name+"</i><br>")
+        div.append("<li><i>"+type.name+"</i></li>")
       })
-        // $.each(typeNames, function(type){
-        //   $(".activity_types").append(type + "<br>")});
       $("a.next").attr("data-id", data.id);
       $("a.previous").attr("data-id", data.id - 1);
     }).fail(function(){
@@ -36,21 +34,20 @@ function nextActivity(){
 function previousActivity(){
   $("a.previous").click(function(e){
     var previousId = parseInt($(".previous").attr("data-id")) - 1;
-    console.log(previousId)
     $.get("/activities/" + previousId + ".json", function(data){
       $("#activity_name").text(data["name"]);
       $("#activity_price").text("$" + data["price"]);
-      $(".activity_types").text("");
+      $(".append_types").text("");
       var typeNames = data.types
       var div = $(".append_types")
       typeNames.forEach(function(type){
-        div.append("<i>"+type.name+"</i><br>")
+        div.append("<li><i>"+type.name+"</i></li>")
       })
       // let typeNames = data.types.map((type) => type.name);
       //   $.each(typeNames, function(){
       //     $(".activity_types").append(this + "<br>")});
-      $("a.previous").attr("data-id", data.id - 1);
-      $("a.next").attr("data-id", data.id);
+      $("a.previous").attr("data-id", data.id);
+      $("a.next").attr("data-id", data.id) + 1;
     }).fail(function(){
         alert("Oops! Go forward : )");
         window.location.href="http://localhost:3000/activities/list"
