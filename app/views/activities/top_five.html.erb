@@ -1,9 +1,0 @@
-<h1> Top Five Rated Activities </h1>
-<ol>
-<% @activities.each do |activity| %>
-
-  <li><%= render partial: 'activity_details', locals: {activity: activity} %></li>
-
-
-<% end %>
-</ol>

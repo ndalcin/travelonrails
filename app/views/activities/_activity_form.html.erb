@@ -1,56 +1,58 @@
-<%= form_for @activity do |f| %>
+<div class="container">
+  <%= form_for @activity do |f| %>
 
-  <% if @activity.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% @activity.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.label "Start by selecting one of your vacations" %>
-    <br>
-    <%= f.collection_select :vacation_id, current_user.vacations, :id, :name %>
-  </div>
-  <div class="field">
-    <%= f.label "Name" %>
-    <br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label "Description" %>
-    <br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label "Price per person (in $USD)" %>
-    <br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label "Rating (on a scale from one to ten, how excited are you to do this?)" %>
-    <br>
-    <%= f.text_field :rating %>
-  </div>
-  <div class="field">
-    <%= f.label "How many people will be participating?" %>
-    <br>
-    <%= f.text_field :people %>
-  </div>
-  <div class="field">
-    <%= f.label "What type of activity is this? Select from below, or create your own." %>
-    <br>
-    <%= f.collection_select :types, Type.all, :id, :name, include_blank: true %>
-    <br>
-    <%= f.fields_for :type, @activity.types.build do |ff| %>
-       <%= ff.text_field :name %>
+    <% if @activity.errors.any? %>
+      <div class="error_messages">
+        <h2>Form is invalid</h2>
+        <ul>
+          <% @activity.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
-  </div>
-  <br>
+    <div class="field">
+      <%= f.label "Start by selecting one of your vacations" %>
+      <br>
+      <%= f.collection_select :vacation_id, current_user.vacations, :id, :name %>
+    </div><br>
+    <div class="field">
+      <%= f.label "Activity Name" %>
+      <br>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label "Description" %>
+      <br>
+      <%= f.text_area :description %>
+    </div>
+    <div class="field">
+      <%= f.label "$$$ Per Person" %>
+      <br>
+      <%= f.text_field :price %>
+    </div>
+    <!-- <div class="field">
+      <%= f.label "Rating (on a scale from one to ten, how excited are you to do this?)" %>
+      <br>
+      <%= f.text_field :rating %>
+    </div>
+    <div class="field">
+      <%= f.label "How many people will be participating?" %>
+      <br>
+      <%= f.text_field :people %>
+    </div> -->
+    <div class="field">
+      <%= f.label "What type of activity is this? Select from below and/or create your own." %>
+      <br>
+      <%= f.collection_check_boxes :type_ids, Type.all, :id, :name %>
+      <br>
+      <%= f.fields_for :types, @activity.types.build do |ff| %>
+         <%= ff.text_field :name %>
+      <% end %>
+    </div>
+    <br>
 
-  <%= f.submit "Add Activity" %>
+    <%= f.submit "Add Activity" %>
 
-<% end %>
+  <% end %>
+</div>

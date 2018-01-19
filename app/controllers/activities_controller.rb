@@ -21,9 +21,9 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    byebug
+
     @activity = Activity.new(activity_params)
-    byebug
+
     if @activity.save
       redirect_to vacation_path(vacation)
     end
@@ -47,7 +47,7 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:name, :description, :price, :rating, :people, :vacation_id, type_ids: [], types_attributes: [:name])
+    params.require(:activity).permit(:name, :price, :vacation_id, types: [], type_attributes: [:name])
   end
 
   def set_activity

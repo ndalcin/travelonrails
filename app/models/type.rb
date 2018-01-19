@@ -1,3 +1,4 @@
 class Type < ApplicationRecord
-  has_and_belongs_to_many :activities
+  has_many :activity_types
+  has_many :activities, through: :activity_types
 end

@@ -50,7 +50,7 @@ class VacationsController < ApplicationController
   private
 
   def vacation_params
-    params.require(:vacation).permit(:date, :destination_id, :name, :budget, :length)
+    params.require(:vacation).permit(:destination_id, :name, :budget, :user_id)
   end
 
   def set_vacation

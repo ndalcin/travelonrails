@@ -30,8 +30,8 @@ destinations_list.each do |destination|
   Destination.create(city: destination[0], country: destination[1])
 end
 
-Vacation.create(name: "Super Fun Vacay!", date: "Sometime in 2018", user_id: 1, destination_id: 8, budget: 1000, length: 20)
-Vacation.create(name: "British Invasion", date: "Sometime in 2019", user_id: 2, destination_id: 13, budget: 2000, length: 10)
+Vacation.create(name: "Super Fun Vacay!", user_id: 1, destination_id: 8, budget: 1000)
+Vacation.create(name: "British Invasion", user_id: 2, destination_id: 13, budget: 2000)
 
 types_list = [
   "Museum", "Food", "Exercise", "Sightseeing", "Sporting Event", "Relax", "Social"
@@ -42,22 +42,22 @@ types_list.each do |type|
 end
 
 activities_list = [
-  ["Art Museum", 10, 1, 6, 1],
-  ["BEST Restaurant", 100, 2, 9, 1],
-  ["Strenuous Hike", 0, 3, 7, 1],
-  ["Famous Monuments Tour", 20, 4, 6, 1],
-  ["History Museum", 15, 1, 5, 1],
-  ["Hop-On, Hop-off Bus", 25, 4, 6, 1],
-  ["Football Game", 100, 5, 8, 1],
-  ["City Bike Tour", 30, 4, 8, 2],
-  ["Food Market Tour", 75, 2, 9, 2],
-  ["Baseball Game", 90, 5, 7, 2],
-  ["Easy Hike", 0, 3, 6, 2],
-  ["Super Famous Nightclub", 60, 8, 8, 2],
-  ["Day Spa", 125, 7, 8, 2],
-  ["Brewery Tour", 30, 8, 10, 1]
+  ["Art Museum", 10],
+  ["BEST Restaurant", 100],
+  ["Strenuous Hike", 0],
+  ["Famous Monuments Tour", 20],
+  ["History Museum", 15],
+  ["Hop-On, Hop-off Bus", 25],
+  ["Football Game", 100],
+  ["City Bike Tour", 30],
+  ["Food Market Tour", 75],
+  ["Baseball Game", 90],
+  ["Easy Hike", 0],
+  ["Super Famous Nightclub", 60],
+  ["Day Spa", 125],
+  ["Brewery Tour", 30]
 ]
 
 activities_list.each do |activity|
-  Activity.create(name: activity[0], price: activity[1], type_id: activity[2], rating: activity[3], vacation_id: activity[4])
+  Activity.create(name: activity[0], price: activity[1])
 end

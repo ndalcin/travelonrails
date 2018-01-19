@@ -10,24 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119020130) do
+ActiveRecord::Schema.define(version: 20180119031407) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
     t.integer "price"
-    t.integer "rating"
     t.integer "vacation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "description"
-    t.integer "people"
   end
 
-  create_table "activity_types", id: false, force: :cascade do |t|
-    t.integer "activity_id"
-    t.integer "type_id"
-    t.index ["activity_id"], name: "index_activity_types_on_activity_id"
-    t.index ["type_id"], name: "index_activity_types_on_type_id"
+  create_table "activity_types", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "product_id"
   end
 
   create_table "destinations", force: :cascade do |t|
@@ -54,13 +49,12 @@ ActiveRecord::Schema.define(version: 20180119020130) do
 
   create_table "vacations", force: :cascade do |t|
     t.string "name"
-    t.string "date"
     t.integer "user_id"
     t.integer "destination_id"
     t.integer "budget"
-    t.integer "length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "people"
   end
 
 end

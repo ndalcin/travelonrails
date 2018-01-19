@@ -7,10 +7,9 @@ class Vacation < ApplicationRecord
 
   validates :name, presence: true
   validates :budget, presence: true, :numericality => { :only_integer => true, :greater_than => 0 }
-  validates :length, presence: true, :numericality => { :only_integer => true, :greater_than => 0 }
-  validates :date, presence: true
   validates :destination_id, presence: true
   validates :user_id, presence: true
+  validates :people, presence: true
 
   def activities_total
     activities_total = 0
