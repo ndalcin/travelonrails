@@ -29,9 +29,9 @@
     <div class="field">
       <%= f.label "What type of activity is this? Select from below and/or create your own." %>
       <br>
-      <%= f.collection_check_boxes :types, Type.all, :id, :name %>
+      <%= f.collection_check_boxes :type_ids, Type.all, :id, :name, include_hidden: false %>
       <br>
-      <%= f.fields_for :type, @type do |ff| %>
+      <%= f.fields_for :types, @activity.types.build do |ff| %>
          <%= ff.text_field :name %>
       <% end %>
     </div>

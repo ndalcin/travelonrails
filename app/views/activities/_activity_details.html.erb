@@ -1,4 +1,9 @@
 <h4 id="activity_name"><%= activity.name %></h4>
-
+<!-- <b>Location:</b>
+  <p id="activity_vacation_destination"><%= activity.vacation_id %></p> -->
 <b>Price per person: </b>
   <p id="activity_price">$<%= activity.price %> </p>
+<b>Activity Type:</b><br>
+    <% activity.types.each do |type| %>
+    <%= type.name%><br>
+    <% end %>

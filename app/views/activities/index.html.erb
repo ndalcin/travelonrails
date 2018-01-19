@@ -1,11 +1,19 @@
 <h2><%= current_user.name %>'s Planned Activities</h2>
 
+<% if current_user.vacations.empty? %>
+  <b>To start adding activities, first plan a vacation!</b><br>
+  <b>Click <%= link_to 'here', new_user_vacation_path(current_user) %> to start adding vacations</b>
+<% else %>
+
 <%= link_to "Load All Planned Activities", user_activities_path(current_user), id: "load_users_activities" %>
 
-<ul>
-<% @activities.each do |activity| %>
-  <li><%= render partial: 'activity_details', locals: {activity: activity} %></li>
-<% end %>
-</ul>
+  <ol>
+  <% @activities.each do |activity| %>
+    <li><%= render partial: 'activity_details', locals: {activity: activity} %></li>
+  <% end %>
+</ol>
 
-<%= render partial: 'activity_form' %>
+<h5>Add some more activities to your vacations! </h5>
+  <%= render partial: 'activity_form' %>
+
+<% end %>

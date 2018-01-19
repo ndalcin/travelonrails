@@ -1,4 +1,6 @@
 <div class="container">
+  <h5>Add More Vacations:</h5>
+
   <%= form_for @vacation do |f| %>
 
   <% if @vacation.errors.any? %>
@@ -26,10 +28,6 @@
     <div class="field">
       <%= f.label "What is your budget? (Please input number in dollars)" %></br>
       <%= f.text_field :budget %>
-    </div>
-    <div class="field">
-      <%= f.label "How many people?" %></br>
-      <%= f.text_field :people %>
     </div>
     <br>
     <div class="actions">

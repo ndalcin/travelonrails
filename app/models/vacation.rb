@@ -9,12 +9,11 @@ class Vacation < ApplicationRecord
   validates :budget, presence: true, :numericality => { :only_integer => true, :greater_than => 0 }
   validates :destination_id, presence: true
   validates :user_id, presence: true
-  # validates :people, presence: true, :numericality => { :only_integer => true, :greater_than => 0 }
 
   def activities_total
     activities_total = 0
     self.activities.each do |activity|
-      activities_total += (activity.price * activity.people)
+      activities_total += activity.price
     end
     activities_total
   end

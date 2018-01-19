@@ -5,6 +5,7 @@ class CreateVacations < ActiveRecord::Migration[5.1]
       t.integer :user_id
       t.integer :destination_id
       t.integer :budget
+      t.integer :people
       t.timestamps
     end
   end

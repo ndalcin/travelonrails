@@ -1,13 +1,21 @@
 <div class="container">
+    <h2 id="vacation_name"><%= vacation.name%></h2>
+    <%= link_to "Edit", edit_vacation_path(vacation) %>
   <div class="row">
     <div class="col">
-      <b>Destination</b><p id="destination"><%= vacation.destination.full_name %></p>
-      <b>Number of People</b><p id="people"><%= vacation.people %></p>
+      <b>Destination</b><br>
+      <p id="destination"><%= vacation.destination.full_name %></p>
     </div>
     <div class="col">
-      <b>Budget:</b><p id="vacation_budget"> $<%= vacation.budget %></p>
-      <b>Cost of Activities:</b><p id="activities_total">$<%=vacation.activities_total%></p>
+      <b>Budget:</b><br>
+      <p id="vacation_budget"> $<%= vacation.budget %></p>
     </div>
-    <b>Changes?</b><%= link_to "Edit", edit_vacation_path(vacation) %>
+    <div class="col">
+      <b>Cost of Activities:</b><br>
+      <p id="activities_total">$<%=vacation.activities_total%></p>
+    </div>
+    <div class ="col">
+      <!-- empty div for spacing -->
+    </div>
   </div>
 </div>

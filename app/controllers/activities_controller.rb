@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: [:show, :update]
+  before_action :set_activity, only: [:show, :edit, :update, :delete]
+  before_action :authorize, except: [:list]
 
   def list
     @activities = Activity.limit(10)
@@ -8,7 +9,6 @@ class ActivitiesController < ApplicationController
   def index
     @activities = current_user.activities
     @activity = Activity.new
-    @type = @activity.types.build
   end
 
   def show
@@ -18,37 +18,37 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-
   end
 
   def create
-
     @activity = Activity.new(activity_params)
-
     if @activity.save
-      redirect_to vacation_path(vacation)
+      redirect_to user_activities_path(@activity)
+    else
+      render :index
     end
-
   end
 
-  # def update
-  #   existing_vacation = Vacation.find(params[:activity][:vacation_activities_attributes]["0"][:vacation_id])
-  #   @activity.update(activity_params)
-  #   if @activity.save
-  #     redirect_to vacation_path(existing_vacation)
-  #   else
-  #     redirect_to type_activity_path(@activity, @activity.type), notice: "Please enter a whole number greater than 0 for number of participants"
-  #   end
-  # end
+  def edit
+  end
 
-  def top_five
-    @activities = Activity.top_five
+  def update
+    @activity.update(activity_params)
+    if @activity.save
+      redirect_to user_activities_path(current_user)
+    else
+      render :edit
+    end
+  end
+
+  def delete
+
   end
 
   private
 
   def activity_params
-    params.require(:activity).permit(:name, :price, :vacation_id, types: [], type_attributes: [:name])
+    params.require(:activity).permit(:name, :price, :vacation_id, type_ids: [], types_attributes: [:name])
   end
 
   def set_activity

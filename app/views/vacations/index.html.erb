@@ -3,7 +3,9 @@
   <%= render partial: 'current_vacations' %>
 
 <% elsif current_user && current_user.vacations.empty? %>
+
   <h2>Uh oh! You have no planned vacations!</h2>
-  <!-- <h3>Click <%= link_to 'here', new_user_vacation_path(current_user) %> to start adding vacations</h3> -->
-  <%= render partial: 'vacation_form' , locals: {vacation: @vacation}%>
+
 <% end %>
+
+  <%= render partial: 'vacation_form' , locals: {vacation: @vacation}%>
