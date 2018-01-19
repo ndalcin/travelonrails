@@ -1,6 +1,4 @@
-<% if activity.previous || activity.id == 10 %>
+
   <a href="#" class="previous" data-id="<%=activity.id%>">&laquo; Previous</a>
-<% end %>
-<% if activity.next || activity.id < 10 %>
+
   <a href="#" class="next" data-id="<%=activity.id%>">Next &raquo;</a>
-<% end %>

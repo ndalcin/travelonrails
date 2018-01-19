@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'activities/top_five', to: 'activities#top_five', as: 'top_five'
   get 'activities/list', to: 'activities#list', as: 'activities_list'
 
-  resources :activities, only: [:show, :create]
+  resources :activities, only: [:show, :create, :edit, :update]
 
   resources :destinations, only: :index
 

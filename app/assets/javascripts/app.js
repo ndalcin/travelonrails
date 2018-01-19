@@ -5,24 +5,59 @@ $(document).ready(function (){
 
 
 function attachListeners(){
-  $(".next").click(function(e){
-    e.preventDefault();
+  nextActivity();
+  previousActivity();
+}
+
+function nextActivity(){
+  $("a.next").click(function(e){
     var nextId = parseInt($(".next").attr("data-id")) + 1;
     console.log(nextId)
     $.get("/activities/" + nextId + ".json", function(data){
       console.log(data)
-    //   $("#vacation_name").text(data["name"]);
-    //   $("#destination").text(data["destination"]["city"] + ", " + data["destination"]["country"]);
-    //   $("#date").text(data["date"]);
-    //   $("#length").text(data["length"]);
-    //   $("#vacation_budget").text("$" + data["budget"]);
-    //   $("#activities_total").text("$" + data["activities_total"]);
-    //   $(".next").attr("data-attribute", data["id"])
+      $("#activity_name").text(data["name"]);
+      $("#activity_price").text("$" + data["price"]);
+      $("a.next").attr("data-id", data["id"]);
+      $("a.previous").attr("data-id", data.id - 1);
+    }).fail(function(){
+      alert("Thanks for checking out the list!");
+      window.location.href="http://localhost:3000/activities/list"
+      // $.get("/activities/1.json", function(data) {
+      //   $("#activity_name").text(data["name"]);
+      //   $("#activity_price").text("$" + data["price"]);
+      //   $("a.next").attr("data-id", data["id"]);
+      //   $("a.previous").attr("data-id", data.id - 1);
+      // })
     })
+    e.preventDefault();
   })
-  $("a.previous").click(function(){
-    alert("Testing PREVIOUS!!!");
+}
+
+function previousActivity(){
+  $("a.previous").click(function(e){
+    var previousId = parseInt($(".next").attr("data-id")) - 1;
+    console.log(previousId)
+    $.get("/activities/" + previousId + ".json", function(data){
+      console.log(data)
+      $("#activity_name").text(data["name"]);
+      $("#activity_price").text("$" + data["price"]);
+      $("a.previous").attr("data-id", data["id"]);
+      $("a.next").attr("data-id", data.id + 1);
+    }).fail(function(){
+      alert("Oops! Go forward : )");
+      window.location.href="http://localhost:3000/activities/list"
+      // $.get("/activities/14.json", function(data) {
+      //   $("#activity_name").text(data["name"]);
+      //   $("#activity_price").text("$" + data["price"]);
+      //   $("a.next").attr("data-id", data["id"]);
+      //   $("a.previous").attr("data-id", data.id - 1);
+      // })
+    })
+    e.preventDefault();
   })
+
+
+
 
   $("#show_activities").click(function(e){
     e.preventDefault();

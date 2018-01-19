@@ -31,7 +31,7 @@
       <br>
       <%= f.collection_check_boxes :type_ids, Type.all, :id, :name, include_hidden: false %>
       <br>
-      <%= f.fields_for :types, @activity.types.build do |ff| %>
+      <%= f.fields_for :types, Type.new do |ff| %>
          <%= ff.text_field :name %>
       <% end %>
     </div>

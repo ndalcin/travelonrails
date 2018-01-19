@@ -5,9 +5,13 @@ class Activity < ApplicationRecord
   # accepts_nested_attributes_for :types, :reject_if => proc { |attributes| attributes['name'].blank? }
 
   def types_attributes=(type_attributes)
-    type_attributes.values.each do |type_attribute|
-      type = Type.find_or_create_by(type_attribute)
-      self.types << type
+      type_attributes.values.each do |type_attributes|
+      type = Type.find_or_create_by(type_attributes)
+      if type.name == ""
+        type.destroy
+      else
+        self.types << type
+      end
     end
   end
 

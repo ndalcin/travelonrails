@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
   before_action :authorize, except: [:list]
 
   def list
-    @activities = Activity.limit(10)
+    @activities = Activity.limit(14)
   end
 
   def index
