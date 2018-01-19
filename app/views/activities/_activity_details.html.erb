@@ -5,8 +5,10 @@
   <b>Price per person: </b>
     <p id="activity_price">$<%= activity.price %> </p>
   <b>Activity Type:</b><br>
+    <div class="append_types">
       <% activity.types.each do |type| %>
-      <%= type.name%><br>
+      <li><i><%= type.name%></i><br></li>
       <% end %>
+    </div>
 
 </div>
