@@ -12,8 +12,10 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    if current_user
-      @vacations = current_user.vacations
+    @vacations = current_user.vacations
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @activity.to_json }
     end
   end
 

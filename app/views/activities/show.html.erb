@@ -1,3 +1,5 @@
+<%= render partial: 'next_and_previous_buttons', locals: {activity: @activity} %>
+
 <%= render partial: 'activity_details', locals: {activity: @activity} %>
 
 <%= link_to "I want to do this", user_activities_path(current_user), id: "add_activity_to_vacation" %>

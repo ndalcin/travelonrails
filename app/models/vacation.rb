@@ -26,12 +26,5 @@ class Vacation < ApplicationRecord
     true if self.budget_remaining < 0
   end
 
-  def next
-    user.vacations.where('id > ?', self.id).first
-  end
-
-  def previous
-    user.vacations.where('id < ?', self.id).last
-  end
 
 end

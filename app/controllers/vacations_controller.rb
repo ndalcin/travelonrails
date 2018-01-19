@@ -37,10 +37,10 @@ class VacationsController < ApplicationController
   end
 
   def show
-    # respond_to do |format|
-    #   format.html
-    #   format.json {render json: @vacation}
-    # end
+    respond_to do |format|
+      format.html
+      format.json {render json: @vacation}
+    end
   end
 
   def destroy

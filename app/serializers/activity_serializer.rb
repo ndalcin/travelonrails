@@ -1,3 +1,5 @@
 class ActivitySerializer < ActiveModel::Serializer
-  attributes 
+  attributes :id, :name, :price
+  
+  has_many :types
 end

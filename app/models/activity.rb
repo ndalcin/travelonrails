@@ -10,4 +10,12 @@ class Activity < ApplicationRecord
       self.types << type
     end
   end
+
+  def next
+    Activity.where('id > ?', self.id).first
+  end
+
+  def previous
+    Activity.where('id < ?', self.id).last
+  end
 end
