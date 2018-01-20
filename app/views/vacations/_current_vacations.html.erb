@@ -3,8 +3,7 @@
 <br><br>
 <ol>
   <% current_user.vacations.each do |vacation| %>
-      <li><%= link_to vacation.name, vacation_path(vacation) %> in <%=vacation.destination.full_name%></li>
-      <%= button_to "Delete Vacation", vacation, method: "delete" %>
+      <li><%= link_to vacation.name, vacation_path(vacation) %></br><%=vacation.destination.full_name%></li>
       <br><br>
   <% end %>
 </ol>

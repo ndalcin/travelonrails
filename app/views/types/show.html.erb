@@ -1,6 +1,0 @@
-<h1><%= @type.name %></h1>
-<h2> Check out these activities! </h2>
-<% @type.activities.each do |activity| %>
-  <%= link_to activity.name, type_activity_path(@type, activity) %>
-  <br><br>
-<% end %>

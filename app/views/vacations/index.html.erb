@@ -1,6 +1,6 @@
 <% if current_user && !current_user.vacations.empty? %>
 
-  <%= render partial: 'current_vacations' %>
+  <%= render 'current_vacations' %>
 
 <% elsif current_user && current_user.vacations.empty? %>
 
