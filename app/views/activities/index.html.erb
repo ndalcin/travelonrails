@@ -7,14 +7,12 @@
     <b>Click <%= link_to 'here', new_user_vacation_path(current_user) %> to start adding vacations</b>
   <% else %>
     <br>
-    <% @activities.each do |activity| %>
-      <%= render partial: 'activity_details', locals: {activity: activity} %>
-      <div class="container">
+    <% current_user.vacations.each do |vacation| %>
+      <% vacation.activities.each do |activity| %>
+        <%= render partial: 'activity_details', locals: {activity: activity} %>
         <%= link_to "Edit", edit_activity_path(activity) %>
-      </div>
-      <br>
+      <% end %>
     <% end %>
+
   <% end %>
-
-
 </div>
