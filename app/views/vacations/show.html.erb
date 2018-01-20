@@ -5,7 +5,7 @@
 
     <div class="container">
       <b>Start adding some activities!</b><br>
-      <%= link_to "Add Activities Here", new_activity_path %>
+      <%= link_to "Add Activities Here", new_vacation_activity_path(@vacation) %>
     </div>
   <% else %>
 
@@ -15,6 +15,6 @@
 
     <!-- vacation activities will be shown here -->
     </ol>
-
+  <%= link_to "Add More Activities", new_vacation_activity_path(@vacation) %>
   <% end %>
 </div>

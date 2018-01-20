@@ -1,11 +1,15 @@
-<% if current_user && !current_user.vacations.empty? %>
-
-  <%= render 'current_vacations' %>
-
-<% elsif current_user && current_user.vacations.empty? %>
-
-  <h2>Uh oh! You have no planned vacations!</h2>
-
-<% end %>
-
-  <%= render 'vacation_form' %>
+<div class="container">
+  <h1><%= current_user.name%>'s Planned Vacations </h1></br>
+  <div class="row">
+    <div class="col">
+      <% if current_user && !current_user.vacations.empty? %>
+        <%= render 'current_vacations' %>
+      <% elsif current_user && current_user.vacations.empty? %>
+          <h2>Uh oh! You have no planned vacations!</h2>
+      <% end %>
+    </div>
+    <div class="col">
+    <%= render 'vacation_form' %>
+    </div>
+  </div>
+</div>

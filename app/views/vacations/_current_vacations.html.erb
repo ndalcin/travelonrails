@@ -1,6 +1,4 @@
-<h1><%= current_user.name%>'s Planned Vacations </h1>
 
-<br><br>
 <ol id="current_vacations">
   <% current_user.vacations.each do |vacation| %>
       <li><%= link_to vacation.name, vacation_path(vacation) %></li>

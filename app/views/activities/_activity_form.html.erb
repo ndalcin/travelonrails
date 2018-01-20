@@ -11,10 +11,10 @@
         </ul>
       </div>
     <% end %>
+
     <div class="field">
-      <%= f.label "Start by selecting one of your vacations" %>
       <br>
-      <%= f.collection_select :vacation_id, current_user.vacations, :id, :name %>
+      <%= f.collection_select :vacation_id, current_user.vacations, :id, :name, {:include_blank => 'Select one of your vacations'} %>
     </div><br>
     <div class="field">
       <%= f.label "Activity Name" %>
@@ -37,7 +37,7 @@
     </div>
     <br>
 
-    <%= f.submit "Add Activity" %>
+    <%= f.submit "Add" %>
 
   <% end %>
 </div>

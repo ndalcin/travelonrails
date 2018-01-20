@@ -27,7 +27,13 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-    @activity = Activity.new
+    if params[:vacation_id]
+      @vacation = Vacation.find(params[:vacation_id])
+      @activity = @vacation.activities.build
+    else
+      @activity = Activity.new
+    end
+
   end
 
   def create
