@@ -11,11 +11,10 @@ class ActivitiesController < ApplicationController
       @vacation = Vacation.find(params[:vacation_id])
       @activities = @vacation.activities
       render json: @activities
-    else
+    elsif params[:user_id]
       @activities = current_user.activities
     end
     @activity = Activity.new
-
   end
 
   def show

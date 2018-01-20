@@ -1,7 +1,7 @@
 <div class="container">
 
-  <h2><%= current_user.name %>'s Planned Activities</h2>
-  <h4>Add more<%= link_to "here", new_activity_path %> </h4>
+  <h2><%= current_user.name %>'s Planned Activities:</h2>
+  <h4>You are projected to spend: $<%= current_user.activities_total %></h4>
   <% if current_user.vacations.empty? %>
     <b>To start adding activities, first plan a vacation!</b><br>
     <b>Click <%= link_to 'here', new_user_vacation_path(current_user) %> to start adding vacations</b>
@@ -15,4 +15,6 @@
     <% end %>
 
   <% end %>
+  <br>
+  <h4><%= link_to "Add more activities here", new_activity_path %> </h4>
 </div>
