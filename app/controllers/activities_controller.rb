@@ -10,10 +10,12 @@ class ActivitiesController < ApplicationController
     if params[:vacation_id]
       @vacation = Vacation.find(params[:vacation_id])
       @activities = @vacation.activities
+      render json: @activities
     else
       @activities = current_user.activities
     end
     @activity = Activity.new
+
   end
 
   def show

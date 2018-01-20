@@ -6,6 +6,7 @@ function attachListeners(){
   nextActivity();
   previousActivity();
   addDestination();
+  showActivities();
 }
 
 
@@ -61,9 +62,6 @@ function previousActivity(){
       typeNames.forEach(function(type){
         div.append("<li><i>"+type.name+"</i></li>")
       })
-      // let typeNames = data.types.map((type) => type.name);
-      //   $.each(typeNames, function(){
-      //     $(".activity_types").append(this + "<br>")});
       $("a.previous").attr("data-id", data.id);
       $("a.next").attr("data-id", data.id) + 1;
     }).fail(function(){
@@ -91,23 +89,32 @@ function addDestination(){
   })
 }
 
-  // $("#show_activities").click(function(e){
-  //   e.preventDefault();
-  //   $("#show_activities").hide(); //hide the show activities link when activities are shown
-  //   console.log(this.href)
-  // })
-  //   $.get(this.href).success(function(v_activities){
-  //     $.each(v_activities, function(v_activity){
-  //       debugger
-  //       $("ol#display_vacation_activities").append(
-  //         "<li>" +
-  //         "<b>" + v_activity.activity.name + "</b><br>" +
-  //         "<b>Number of People: </b>" + v_activity.people + "<br>" +
-  //         "<b>Total cost of this activity: </b>$" + v_activity.total_cost + "($" + v_activity.activity.price + "per person)" +
-  //         "</li>"
-  //       )
-  //     })
-  //   })
+function showActivities(){
+  $("a#show_activities").click(function(e){
+    e.preventDefault();
+    $("a#show_activities").hide(); //hide the show activities link when activities are shown
+    $.get(this.href).success(function(activities){
+      $.each(activities, function(index, activity){
+        console.log(activity)
+        $("#display_vacation_activities").append(
+          "<li>" +
+          `<a href="http://localhost:3000/activities/${activity.id}/edit">${activity.name}</a></br>` +
+          "<b>  Price: </b></br>" +
+          "$" + activity.price + "</li></br>"
+        )
+      })
+    })
+  })
+}
 
-//   })
-// }
+    //   $.each(v_activities, function(v_activity){
+    //     debugger
+    //     $("ol#display_vacation_activities").append(
+    //       "<li>" +
+    //       "<b>" + v_activity.activity.name + "</b><br>" +
+    //       "<b>Number of People: </b>" + v_activity.people + "<br>" +
+    //       "<b>Total cost of this activity: </b>$" + v_activity.total_cost + "($" + v_activity.activity.price + "per person)" +
+    //       "</li>"
+    //     )
+    //   })
+    // })
