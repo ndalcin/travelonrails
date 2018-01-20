@@ -9,8 +9,6 @@ function attachListeners(){
   showActivities();
 }
 
-
-
 class Destination{
   constructor(id, city, country){
     this.id = id
@@ -95,7 +93,6 @@ function showActivities(){
     $("a#show_activities").hide(); //hide the show activities link when activities are shown
     $.get(this.href).success(function(activities){
       $.each(activities, function(index, activity){
-        console.log(activity)
         $("#display_vacation_activities").append(
           "<li>" +
           `<a href="http://localhost:3000/activities/${activity.id}/edit">${activity.name}</a></br>` +
@@ -106,15 +103,3 @@ function showActivities(){
     })
   })
 }
-
-    //   $.each(v_activities, function(v_activity){
-    //     debugger
-    //     $("ol#display_vacation_activities").append(
-    //       "<li>" +
-    //       "<b>" + v_activity.activity.name + "</b><br>" +
-    //       "<b>Number of People: </b>" + v_activity.people + "<br>" +
-    //       "<b>Total cost of this activity: </b>$" + v_activity.total_cost + "($" + v_activity.activity.price + "per person)" +
-    //       "</li>"
-    //     )
-    //   })
-    // })

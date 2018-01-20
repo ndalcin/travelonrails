@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: [:show, :edit, :update, :delete]
+  before_action :set_activity, only: [:show, :edit, :update, :destroy]
   before_action :authorize, except: [:list]
 
   def list
@@ -51,8 +51,9 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  def delete
-
+  def destroy
+    @activity.delete
+    redirect_to user_activities_path(current_user)
   end
 
   private
