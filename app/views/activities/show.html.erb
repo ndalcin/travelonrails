@@ -1,5 +1,21 @@
-<%= render partial: 'next_and_previous_buttons', locals: {activity: @activity} %>
+<div class="container">
+  <a href="#" class="previous" data-id="<%=@activity.id%>">&laquo; Previous</a>
 
-<%= render partial: 'activity_details', locals: {activity: @activity} %>
+  <a href="#" class="next" data-id="<%=@activity.id%>">Next &raquo;</a>
 
-<%= link_to "I want to do this", user_activities_path(current_user), id: "add_activity_to_vacation" %>
+
+  <div class="container">
+    <h4 id="activity_name"><%= @activity.name %></h4>
+    <b>Price per person: </b>
+      <p id="activity_price">$<%= @activity.price %> </p>
+    <b>Activity Type:</b><br>
+      <div class="append_types">
+        <% @activity.types.each do |type| %>
+        <li><i><%= type.name%></i></li>
+        <% end %>
+      </div>
+
+  </div>
+
+  <%= link_to "I want to do this", user_activities_path(current_user), id: "add_activity_to_vacation" %>
+</div>
