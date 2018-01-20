@@ -17,7 +17,7 @@
   <% end %>
 
   </ol>
-
+<br>
   <%= form_for @destination do |f| %>
 
     <% if @destination.errors.any? %>
@@ -41,7 +41,7 @@
       <%= f.text_field :country %>
     </div>
     <br>
-    <%= f.submit "Add Destination" %>
+    <%= f.submit %>
   <% end %>
 
 </div>

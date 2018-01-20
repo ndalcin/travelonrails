@@ -1,14 +1,44 @@
-$(document).ready(function (){
+$(document).ready(function(){
   attachListeners();
 })
-
-
 
 function attachListeners(){
   nextActivity();
   previousActivity();
   // addActivity();
   addVacation();
+  addDestination();
+}
+
+class Vacation{
+  constructor(id, name, budget, destination_id, user_id){
+    this.id = id
+    this.name = name
+    this.budget = budget
+    this.destination_id = destination_id
+    this.user_id = user_id
+  }
+}
+
+class Destination{
+  constructor(id, city, country){
+    this.id = id
+    this.city = city
+    this.country = country
+  }
+}
+
+Destination.prototype.buildDestination = function(){
+  let html = ""
+  html += "<li>"
+  html += `${this.city}, ${this.country}`
+  html += "</li>"
+  return html
+}
+
+Vacation.prototype.buildVacation = function(){
+  let html = ""
+
 }
 
 function nextActivity(){
@@ -63,13 +93,34 @@ function addVacation(){
     e.preventDefault();
     alert("clicked but not submitted new vacay!");
     debugger
-    console.log(e.form);
-    // var values = $(this).serialize();
-    // var userId = parseInt($("#review_book_id").attr("value"));
-    // var pageUrl =`/users/${userId}/vacations`;
+    $.ajax({
+      type: "POST",
+      url: this.action,
+      data: $(this).serialize(),
+      dataType: "json",
+      success: function(response) {
+        console.log(response)
+      }
+    })
   })
 }
 
+function addDestination(){
+  $("form#new_destination").submit(function(e){
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: this.action,
+      data: $(this).serialize(),
+      dataType: "json",
+      success: function(response) {
+        let destination = new Destination(response.id, response.city, response.country);
+        $("#append_destination").append(destination.buildDestination());
+        $("form#new_destination")[0].reset(); //clears form upon submission
+      }
+    })
+  })
+}
 
 // function addActivity(){
 //   $("form#new_activity").submit(function(e){

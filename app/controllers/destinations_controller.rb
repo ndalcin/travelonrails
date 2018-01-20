@@ -17,7 +17,18 @@ class DestinationsController < ApplicationController
 
   def create
     @destination = Destination.new(destination_params)
-    @destination.save
+    if @destination.save
+      respond_to do |f|
+        f.html {redirect_to destinations_path}
+        f.json {render :json => @destination}
+      end
+    end
+  end
+
+  private
+
+  def destination_params
+    params.require(:destination).permit(:city, :country)
   end
 
 end
