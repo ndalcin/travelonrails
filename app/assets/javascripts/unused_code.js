@@ -1,5 +1,4 @@
 
-
 // function addActivity(){
 //   $("form#new_activity").submit(function(e){
 //      e.preventDefault();

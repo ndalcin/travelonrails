@@ -33,7 +33,10 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     if @activity.save
-      redirect_to user_activities_path(@activity)
+      respond_to do |format|
+        format.html { redirect_to user_activities_path(@activity) }
+        format.json { render json: @activity}
+      end
     else
       render :index
     end
