@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  get 'activities/top_five', to: 'activities#top_five', as: 'top_five'
   get 'activities/list', to: 'activities#list', as: 'activities_list'
   # get 'users/activities', to: 'activities#user_list', as: 'all_user_activities'
 

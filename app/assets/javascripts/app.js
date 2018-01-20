@@ -7,7 +7,8 @@ $(document).ready(function (){
 function attachListeners(){
   nextActivity();
   previousActivity();
-  addActivity();
+  // addActivity();
+  addVacation();
 }
 
 function nextActivity(){
@@ -57,24 +58,41 @@ function previousActivity(){
   })
 }
 
-function addActivity(){
-  $("form#new_activity").submit(function(e){
-     e.preventDefault();
-     // don't actually submit this form
-     alert("clicked but not submitted!")
-     var values = $(this).serialize();
-     var posting = $.post('/activities', values);
-     posting.done(function(data){
-        console.log(data)
-     //
-     // debugger
-     //
-     // $.ajax({
-     //   type:"POST",
-     //   url:pageURL
-     })
+function addVacation(){
+  $("form#new_vacation").submit(function(e){
+    e.preventDefault();
+    alert("clicked but not submitted new vacay!");
+    debugger
+    console.log(e.form);
+    // var values = $(this).serialize();
+    // var userId = parseInt($("#review_book_id").attr("value"));
+    // var pageUrl =`/users/${userId}/vacations`;
   })
 }
+
+
+// function addActivity(){
+//   $("form#new_activity").submit(function(e){
+//      e.preventDefault();
+//      // don't actually submit this form
+//      alert("clicked but not submitted!")
+//      // var values = $(this).serialize();
+//      // var posting = $.post('/activities', values);
+//      // posting.done(function(data){
+//      //    console.log(data)
+//      // //
+//      // // debugger
+//      // //
+//      $.ajax({
+//        type: "POST",
+//        url: "/activities",
+//        data: $(this).serialize(),
+//        success: function(response) {
+//          let activity = new Activity
+//        }
+//      })
+//   })
+// }
 
 
 

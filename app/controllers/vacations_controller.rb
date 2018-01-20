@@ -10,12 +10,15 @@ class VacationsController < ApplicationController
     if params[:commit] == "I want to go here"
       @vacation = Vacation.new(vacation_params)
     else
-      @vacation = Vacation.new
+      byebug
+      @vacation = current_user.vacations.build
+
     end
   end
 
   def create
-    @vacation = current_user.vacations.new(vacation_params)
+    @vacation = Vacation.new(vacation_params)
+    @vacation.user_id = current_user.id
     if @vacation.save
       redirect_to vacation_path(@vacation)
     else

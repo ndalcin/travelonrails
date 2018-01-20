@@ -1,5 +1,5 @@
 <div class="container">
-  <h5>Add More Vacations:</h5>
+  <h5>Add Another Vacation:</h5>
 
   <%= form_for @vacation do |f| %>
 
@@ -13,7 +13,6 @@
       </ul>
     </div>
   <% end %>
-
     <div class="field">
       <%= f.label "Where would you like to go?" %>
       <br>
@@ -31,6 +30,7 @@
     </div>
     <br>
     <div class="actions">
+      <%= hidden_field_tag :user_id, current_user.id %>
       <%= f.submit %>
     </div>
   <% end %>
