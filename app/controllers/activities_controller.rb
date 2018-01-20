@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
-  before_action :authorize, except: [:list]
+  # before_action :authorize, except: [:list]
 
   def list
     @activities = Activity.limit(14)
