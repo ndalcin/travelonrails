@@ -20,6 +20,7 @@ class ActivitiesController < ApplicationController
   end
 
   def new
+    @activity = Activity.new
   end
 
   def create
