@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :activities, only: [:show, :create, :edit, :update]
 
-  resources :destinations, only: :index
+  resources :destinations, only: [:index, :create]
 
   resources :users do
     resources :vacations, only: [:index, :new, :create]

@@ -1,6 +1,7 @@
 class DestinationsController < ApplicationController
-  
+
   def index
+    @destination = Destination.new
     @destinations = Destination.all
     @vacation = Vacation.create
     if !params[:location].blank?
@@ -12,6 +13,11 @@ class DestinationsController < ApplicationController
     else
       @destinations = Destination.all
     end
+  end
+
+  def create
+    @destination = Destination.new(destination_params)
+    @destination.save
   end
 
 end

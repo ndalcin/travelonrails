@@ -1,27 +1,47 @@
-<h1> Check out all of our great destinations! </h1>
+<div class="container">
+  <% if current_user %>
+    <%= link_to 'Start Planning your Vacation!', new_user_vacation_path(current_user) %>
+  <% end %>
 
-<h3>Filter Destinations:</h3>
-  <%= render partial: 'filter' %>
+  <h2> Choose from our user's favorite destinations </h2>
+  <h2> ... or, add a destination of your own! </h2>
 
+  <br>
+  <h4>Filter Destinations:</h4>
+    <%= render partial: 'filter' %>
+  <br>
 
-<ol>
-<% @destinations.each do |destination| %>
-    <li><%= destination.full_name %></li>
+  <ol id="append_destination">
+  <% @destinations.each do |destination| %>
+      <li><%= destination.full_name %></li>
+  <% end %>
 
-    <% if current_user %>
-      <br>
-      <%= form_for @vacation, :url => new_user_vacation_path(current_user, @vacation), method: :get do |f| %>
-          <%= f.hidden_field :destination_id, value: destination.id %>
-          <%= f.submit "I want to go here"%>
-      <% end %>
+  </ol>
+
+  <%= form_for @destination do |f| %>
+
+    <% if @destination.errors.any? %>
+      <div class="error_messages">
+        <h2>Form is invalid</h2>
+        <ul>
+          <% @destination.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
-  <br>
-  <br>
-<% end %>
-</ol>
+    <div class="field">
+      <%= f.label "City" %>
+      <br>
+      <%= f.text_field :city %>
+    </div><br>
+    <div class="field">
+      <%= f.label "Country" %>
+      <br>
+      <%= f.text_field :country %>
+    </div>
+    <br>
+    <%= f.submit "Add Destination" %>
+  <% end %>
 
-
-
-<% if current_user %>
-  <%= link_to 'Start Planning a Vacation!', new_user_vacation_path(current_user) %>
-<% end %>
+</div>
