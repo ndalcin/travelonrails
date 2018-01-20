@@ -1,9 +1,9 @@
 <h1><%= current_user.name%>'s Planned Vacations </h1>
 
 <br><br>
-<ol>
+<ol id="current_vacations">
   <% current_user.vacations.each do |vacation| %>
-      <li><%= link_to vacation.name, vacation_path(vacation) %></br><%=vacation.destination.full_name%></li>
-      <br><br>
+      <li><%= link_to vacation.name, vacation_path(vacation) %></li>
+      <br>
   <% end %>
 </ol>

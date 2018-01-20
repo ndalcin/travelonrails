@@ -7,6 +7,7 @@ function attachListeners(){
   previousActivity();
   addDestination();
   showActivities();
+  addVacation();
 }
 
 class Destination{
@@ -100,6 +101,43 @@ function showActivities(){
           "$" + activity.price + "</li></br>"
         )
       })
+    })
+  })
+}
+
+class Vacation{
+  constructor(id, name){
+    this.id = id
+    this.name = name
+  }
+}
+
+Vacation.prototype.buildVacation = function(){
+  let html = ""
+  html += "<li>"
+  html += `<a href="http://localhost:3000/vacations/${this.id}">${this.name}</a>`
+  html += "</li>"
+  return html
+}
+
+
+function addVacation(){
+  $("form#new_vacation").submit(function(e){
+    e.preventDefault();
+    alert("clicked but not submitted new vacay!");
+    debugger
+    $.ajax({
+      type: "POST",
+      url: this.action,
+      data: $(this).serialize(),
+      dataType: "json",
+      success: function(response) {
+        debugger
+        let vacation = new Vacation(response.id, response.name)
+        console.log(vacation)
+        $("ol#current_vacations").append(vacation.buildVacation());
+        $("form#new_vacation").trigger("reset")
+      }
     })
   })
 }

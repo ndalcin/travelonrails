@@ -18,7 +18,10 @@ class VacationsController < ApplicationController
     @vacation = Vacation.new(vacation_params)
     @vacation.user_id = current_user.id
     if @vacation.save
-      redirect_to vacation_path(@vacation)
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @vacation}
+      end
     else
       render "edit", notice: "Please fill in all fields"
     end
