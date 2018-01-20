@@ -62,3 +62,10 @@ a:hover {
     background-color: #f1f1f1;
     color: black;
 }
+
+ol#append_destination {
+  height: 380px;
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
