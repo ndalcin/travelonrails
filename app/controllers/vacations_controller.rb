@@ -10,9 +10,7 @@ class VacationsController < ApplicationController
     if params[:commit] == "I want to go here"
       @vacation = Vacation.new(vacation_params)
     else
-      byebug
       @vacation = current_user.vacations.build
-
     end
   end
 

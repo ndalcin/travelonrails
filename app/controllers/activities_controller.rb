@@ -7,7 +7,12 @@ class ActivitiesController < ApplicationController
   end
 
   def index
-    @activities = current_user.activities
+    if params[:vacation_id]
+      @vacation = Vacation.find(params[:vacation_id])
+      @activities = @vacation.activities
+    else
+      @activities = current_user.activities
+    end
     @activity = Activity.new
   end
 
