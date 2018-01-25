@@ -31,7 +31,8 @@ function addVacation(){
         let vacation = new Vacation(response.id, response.name)
         console.log(vacation)
         $("ol#current_vacations").append(vacation.buildVacation());
-        $("form#new_vacation").trigger("reset")
+        $("form#new_vacation").trigger("reset");
+        $("#submit_vacation").removeAttr("disabled")
       }
     })
   })

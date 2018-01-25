@@ -1,6 +1,7 @@
 class Destination < ApplicationRecord
   has_many :vacations
-
+  validates_presence_of :city
+  validates_presence_of :country
 
   def self.domestic
     where(country: "USA")
