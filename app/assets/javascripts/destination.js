@@ -31,7 +31,10 @@ function addDestination(){
         $("#append_destination").append(destination.buildDestination());
         $("form#new_destination")[0].reset(); //clears form upon submission
         $("#submit_destination").removeAttr("disabled");
-      }
+      },
+      error: function(xhr, status, error) {
+       debugger
+     }
     })
   })
 }

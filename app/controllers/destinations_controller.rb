@@ -19,6 +19,9 @@ class DestinationsController < ApplicationController
     @destination = Destination.new(destination_params)
     if @destination.save
       render :json => @destination
+    else
+      byebug
+      render :json => @destination.errors
     end
   end
 
